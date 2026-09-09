@@ -41,26 +41,10 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/LatentActionRobotics/latentos-developer-docs/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/LatentActionRobotics/latentos-developer-docs/tree/main/',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/LatentActionRobotics/latentos-developer-docs/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -83,11 +67,10 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'docsSidebar',
           position: 'left',
-          label: '教程',
+          label: '文档',
         },
-        {to: '/blog', label: '博客', position: 'left'},
         {
           href: 'https://github.com/LatentActionRobotics',
           label: 'GitHub',
@@ -102,8 +85,16 @@ const config: Config = {
           title: '快速阅读',
           items: [
             {
-              label: '教程',
+              label: '文档',
               to: '/docs/intro',
+            },
+            {
+              label: '安装 SDK',
+              to: '/docs/getting-started/install',
+            },
+            {
+              label: '运行示例',
+              to: '/docs/examples',
             },
           ],
         },

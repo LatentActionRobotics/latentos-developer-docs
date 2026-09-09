@@ -1,5 +1,6 @@
 import type {ReactNode} from 'react';
 import clsx from 'clsx';
+import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
@@ -7,49 +8,48 @@ type FeatureItem = {
   title: string;
   Svg: React.ComponentType<React.ComponentProps<'svg'>>;
   description: ReactNode;
+  to: string;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: '安装 SDK',
+    to: '/docs/getting-started/install',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
-      <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
-      </>
+      <>先装 Runtime，再装 C++ 或 Python SDK。开发机与目标机架构、版本需要配套。</>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: '控制运动',
+    to: '/docs/examples/switch-group',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
+      <>按 group / policy 规则切换步态，再发送 SE2 速度。上电路径从 passive、stand 走到 locomotion。</>
     ),
   },
   {
-    title: 'Powered by React',
+    title: '读取状态',
+    to: '/docs/examples/battery',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
+      <>一次性读取或持续订阅电池等状态。C++ 还可按模块访问遥测、关节、相机和导航。</>
     ),
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, Svg, description, to}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <Link to={to} aria-label={title}>
+          <Svg className={styles.featureSvg} role="img" aria-hidden="true" />
+        </Link>
       </div>
       <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
+        <Heading as="h3">
+          <Link to={to}>{title}</Link>
+        </Heading>
         <p>{description}</p>
       </div>
     </div>
