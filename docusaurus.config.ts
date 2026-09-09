@@ -14,8 +14,8 @@ const config: Config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
-  url: 'https://docs.latent-action.com',
-  baseUrl: '/',
+  url: 'https://LatentActionRobotics.github.io',
+  baseUrl: '/latentos-developer-docs/',
   trailingSlash: false,
 
   organizationName: 'LatentActionRobotics',
