@@ -4,27 +4,48 @@
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
+/**
+ * LatentOS palette, sampled from static/img/logo.png:
+ *   #2559A2  saturated royal blue (bottom-left)
+ *   #48509D  indigo mid-tone
+ *   #694899  violet highlight (top-right)
+ */
+
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --latentos-blue: #2559a2;
+  --latentos-indigo: #48509d;
+  --latentos-purple: #694899;
+  --latentos-gradient: linear-gradient(
+    135deg,
+    var(--latentos-purple) 0%,
+    var(--latentos-indigo) 48%,
+    var(--latentos-blue) 100%
+  );
+
+  --ifm-color-primary: #2559a2;
+  --ifm-color-primary-dark: #215092;
+  --ifm-color-primary-darker: #1f4c8a;
+  --ifm-color-primary-darkest: #1a3e71;
+  --ifm-color-primary-light: #3b6aab;
+  --ifm-color-primary-lighter: #4672b0;
+  --ifm-color-primary-lightest: #668bbe;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(37, 89, 162, 0.08);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #9c90d5;
+  --ifm-color-primary-dark: #8c82c0;
+  --ifm-color-primary-darker: #857ab5;
+  --ifm-color-primary-darkest: #6d6595;
+  --ifm-color-primary-light: #a69bd9;
+  --ifm-color-primary-lighter: #aba1db;
+  --ifm-color-primary-lightest: #bab1e2;
+  --docusaurus-highlighted-code-line-bg: rgba(156, 144, 213, 0.15);
+}
+
+.hero--primary {
+  --ifm-hero-text-color: #ffffff;
+  background: var(--latentos-gradient);
+  color: #ffffff;
 }
