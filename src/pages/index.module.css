@@ -1,23 +1,86 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
 .heroBanner {
-  padding: 4rem 0;
-  text-align: center;
   position: relative;
+  display: flex;
+  align-items: center;
+  min-height: max(640px, min(86vh, 840px));
+  padding: 7rem 0 8rem;
   overflow: hidden;
+  text-align: left;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
+.heroInner {
+  position: relative;
+  z-index: 1;
+}
+
+.heroCopy {
+  max-width: 40rem;
+}
+
+.heroBanner :global(.hero__title),
+.heroBanner :global(.hero__subtitle) {
+  text-align: left;
+}
+
+@media screen and (min-width: 997px) {
+  .heroCopy {
+    max-width: min(42rem, calc(100% - 18rem));
+  }
+
+  .heroBanner :global(.hero__title) {
+    white-space: nowrap;
+    font-size: clamp(2.35rem, 3.5vw, 3rem);
   }
 }
 
 .buttons {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-top: 0.5rem;
+}
+
+.heroRobot {
+  position: absolute;
+  right: clamp(-36px, -2.2vw, -8px);
+  bottom: clamp(-64px, -8vh, -28px);
+  width: min(44vw, 640px);
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+@media screen and (min-width: 1600px) {
+  .heroRobot {
+    right: -8px;
+    bottom: -40px;
+    width: min(36vw, 600px);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .heroRobot {
+    width: min(56vw, 520px);
+    right: -6%;
+    bottom: -12%;
+  }
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    align-items: flex-start;
+    min-height: 560px;
+    padding: 3.5rem 0 12rem;
+  }
+
+  .heroCopy {
+    max-width: 100%;
+  }
+
+  .heroRobot {
+    width: min(78vw, 380px);
+    right: -10%;
+    bottom: -8%;
+  }
 }
