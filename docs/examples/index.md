@@ -4,7 +4,7 @@ sidebar_label: 示例总览
 
 # 运行示例
 
-示例代码在 `latentos_high_level_sdk_example` 仓库中。先完成 [安装](/docs/getting-started/install) 和 [连接配置](/docs/getting-started/connect)，再在仓库根目录操作。
+示例代码在 `latentos_high_level_sdk_example` 仓库中。先完成 [安装](/getting-started/install) 和 [连接配置](/getting-started/connect)，再在仓库根目录操作。
 
 后文用 `$CLIENT` 表示：
 
@@ -17,10 +17,10 @@ CLIENT="$PWD/config/echo/mode/client.yaml"
 
 | 示例 | 功能 |
 | --- | --- |
-| [get_battery / subscribe_battery](/docs/examples/battery) | 获取一次或持续订阅电池状态 |
-| [switch_group](/docs/examples/switch-group) | 切换运动 group |
-| [switch_policy](/docs/examples/switch-policy) | 在当前 group 内切换 policy |
-| [send_velocity](/docs/examples/send-velocity) | 发送 SE2 速度 |
+| [get_battery / subscribe_battery](/examples/battery) | 获取一次或持续订阅电池状态 |
+| [switch_group](/examples/switch-group) | 切换运动 group |
+| [switch_policy](/examples/switch-policy) | 在当前 group 内切换 policy |
+| [send_velocity](/examples/send-velocity) | 发送 SE2 速度 |
 
 Python 与 C++ 同名示例的参数一致（`--client-config` 可选）。只读数据都成对提供 `get_*`（一次性）与 `subscribe_*`（持续）。
 

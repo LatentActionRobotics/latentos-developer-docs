@@ -1,6 +1,6 @@
 # 切换 Policy
 
-只在当前 group 为 `locomotion` 或 `motion_tracking` 时有效。其它 group 会报 `current group does not support policy switch`。先 [切换 group](/docs/examples/switch-group)，再切换 policy。
+只在当前 group 为 `locomotion` 或 `motion_tracking` 时有效。其它 group 会报 `current group does not support policy switch`。先 [切换 group](/examples/switch-group)，再切换 policy。
 
 用法：`switch_policy <policy> [--client-config PATH]`
 

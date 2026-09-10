@@ -15,7 +15,7 @@ const config: Config = {
   },
 
   url: 'https://LatentActionRobotics.github.io',
-  baseUrl: '/latentos-developer-docs/',
+  baseUrl: '/docs/',
   trailingSlash: false,
 
   organizationName: 'LatentActionRobotics',
@@ -36,6 +36,7 @@ const config: Config = {
       'classic',
       {
         docs: {
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           editUrl:
             'https://github.com/LatentActionRobotics/latentos-developer-docs/tree/main/',
@@ -83,15 +84,15 @@ const config: Config = {
           items: [
             {
               label: '文档',
-              to: '/docs/intro',
+              to: '/intro',
             },
             {
               label: '安装 SDK',
-              to: '/docs/getting-started/install',
+              to: '/getting-started/install',
             },
             {
               label: '运行示例',
-              to: '/docs/examples',
+              to: '/examples',
             },
           ],
         },

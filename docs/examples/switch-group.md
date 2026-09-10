@@ -1,6 +1,6 @@
 # 切换 Group
 
-将机器切换到指定的运动控制 group。`locomotion` / `motion_tracking` 必须带 policy，其它 group 不要传 policy。名称与切换路径见 [Group 与 Policy](/docs/concepts/groups-and-policies)。
+将机器切换到指定的运动控制 group。`locomotion` / `motion_tracking` 必须带 policy，其它 group 不要传 policy。名称与切换路径见 [Group 与 Policy](/concepts/groups-and-policies)。
 
 用法：`switch_group <group> [policy] [--client-config PATH]`
 

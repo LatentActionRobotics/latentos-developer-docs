@@ -54,4 +54,4 @@ finally:
 | `subscribe_battery(callback=None)` | 订阅电池；可传入回调 |
 | `get_latest_battery()` | 读取本地缓存的最新电池状态 |
 
-命令类接口返回 `CommandResult`。至少同时检查 `ok` 和 `accepted`，不要只看 `ok`。字段含义见 [C++ 工程集成](/docs/integrate/cpp#命令返回值)。
+命令类接口返回 `CommandResult`。至少同时检查 `ok` 和 `accepted`，不要只看 `ok`。字段含义见 [C++ 工程集成](/integrate/cpp#命令返回值)。

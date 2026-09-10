@@ -27,7 +27,7 @@
 
 ## group 切换被拒
 
-对照目标机允许的切换路径。例如 `standby` 通常不能直接切 `locomotion`，需经 `stand`。见 [Group 与 Policy](/docs/concepts/groups-and-policies)。
+对照目标机允许的切换路径。例如 `standby` 通常不能直接切 `locomotion`，需经 `stand`。见 [Group 与 Policy](/concepts/groups-and-policies)。
 
 ## `current group does not support policy switch`
 

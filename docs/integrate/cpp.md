@@ -13,7 +13,7 @@ my_latentos_cpp_project/
     └── main.cc
 ```
 
-`client.yaml` 内容见 [连接机器人](/docs/getting-started/connect)。`client_config_path` 必须指定；为空时构造会失败。正式程序建议捕获构造阶段的 `std::exception`。
+`client.yaml` 内容见 [连接机器人](/getting-started/connect)。`client_config_path` 必须指定；为空时构造会失败。正式程序建议捕获构造阶段的 `std::exception`。
 
 ## CMake
 
