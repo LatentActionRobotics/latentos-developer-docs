@@ -20,6 +20,7 @@ const sidebars: SidebarsConfig = {
         'examples/index',
         'examples/battery',
         'examples/switch-group',
+        'examples/query-motion-state',
         'examples/switch-policy',
         'examples/send-velocity',
       ],

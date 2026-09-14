@@ -83,6 +83,7 @@ auto battery = power.GetLatestBattery();
 | 接口 | 说明 |
 | --- | --- |
 | `SwitchGroup(group, policy)` | 切换运动 group |
+| `QueryMotionControlState()` | 查询当前/目标 group 与是否正在切换 |
 | `SwitchCurrentPolicy(policy)` | 切换当前 group 的 policy |
 | `SetVelocitySmoothing(enabled)` | 开启或关闭速度平滑 |
 | `SetRemoteVelocityControl(enabled)` | 开启或关闭遥控速度控制 |

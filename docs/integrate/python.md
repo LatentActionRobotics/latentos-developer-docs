@@ -47,6 +47,7 @@ finally:
 | 接口 | 说明 |
 | --- | --- |
 | `switch_group(group, policy)` | 切换运动 group |
+| `query_motion_control_state()` | 查询当前/目标 group 与是否正在切换 |
 | `switch_current_policy(policy)` | 切换当前 group 的 policy |
 | `set_velocity_smoothing(enabled)` | 开启或关闭速度平滑 |
 | `set_remote_velocity_control(enabled)` | 开启或关闭遥控速度控制 |

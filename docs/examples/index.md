@@ -19,6 +19,7 @@ CLIENT="$PWD/config/echo/mode/client.yaml"
 | --- | --- |
 | [get_battery / subscribe_battery](/examples/battery) | 获取一次或持续订阅电池状态 |
 | [switch_group](/examples/switch-group) | 切换运动 group |
+| [query_motion_state](/examples/query-motion-state) | 查询当前运动控制状态（current/target group） |
 | [switch_policy](/examples/switch-policy) | 在当前 group 内切换 policy |
 | [send_velocity](/examples/send-velocity) | 发送 SE2 速度 |
 
@@ -50,6 +51,7 @@ build/examples/get_battery
 build/examples/subscribe_battery
 build/examples/send_velocity
 build/examples/switch_group
+build/examples/query_motion_state
 build/examples/switch_policy
 ```
 

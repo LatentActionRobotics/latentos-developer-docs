@@ -26,3 +26,5 @@ passive → stand → locomotion default → send_velocity
 ```
 
 `switch_policy` 只在当前 group 为 `locomotion` 或 `motion_tracking` 时有效。先 `switch_group`，再按需 `switch_policy`。
+
+可用 [query_motion_state](/examples/query-motion-state) 查询当前 `current_group`；切换过程中还可看 `target_group` 与 `is_transitioning`。
