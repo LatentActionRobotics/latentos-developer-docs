@@ -7,16 +7,16 @@
 | 组件 | 交付目录 | 默认前缀 |
 | --- | --- | --- |
 | Runtime | `sdk_runtime/` | `/data/latentos/sdk_runtime` |
-| C++ SDK | `high_level_sdk_cpp/` | `/data/latentos/high_level_sdk_cpp` |
-| Python SDK | `high_level_sdk_python/` | `/data/latentos/high_level_sdk_python` |
+| C++ SDK | `latentos_sdk_cpp/` | `/data/latentos/sdk_cpp` |
+| Python SDK | `latentos_sdk_python/` | `/data/latentos/sdk_python` |
 
 ```bash
 cd sdk_runtime
 sudo ./activate.sh latentos-sdk_runtime-<ver>-<arch>.tar.gz
-cd ../high_level_sdk_cpp
-sudo ./activate.sh latentos-high_level_sdk_cpp-<ver>-<arch>.tar.gz
-cd ../high_level_sdk_python
-sudo ./activate.sh latentos-high_level_sdk_python-<ver>-<arch>.tar.gz
+cd ../latentos_sdk_cpp
+sudo ./activate.sh latentos-sdk_cpp-<ver>-<arch>.tar.gz
+cd ../latentos_sdk_python
+sudo ./activate.sh latentos-sdk_python-<ver>-<arch>.tar.gz
 ```
 
 `activate.sh` 常用参数：
@@ -29,7 +29,7 @@ sudo ./activate.sh latentos-high_level_sdk_python-<ver>-<arch>.tar.gz
 | `--skip-system-check` | 否 | 关 | 不检查本机缺不缺库 |
 
 - 只用 C++ 或只用 Python 时，装 Runtime + 对应那一个 SDK 即可
-- 三个包的 `<ver>` 应来自同一次交付
+- Runtime 与 SDK 应采用交付说明中验证过的版本组合；它们的版本号不要求相同
 
 若交付物是带 `install.sh` 的 cpp / python 包，按其说明安装；内部仍会落到 `/data/latentos/...`。
 
@@ -39,23 +39,25 @@ sudo ./activate.sh latentos-high_level_sdk_python-<ver>-<arch>.tar.gz
 
 ```bash
 # C++ 构建 / 链接
-export CMAKE_PREFIX_PATH="/data/latentos/high_level_sdk_cpp:/data/latentos/sdk_runtime:/data/latentos/sdk_runtime/third_party"
+export CMAKE_PREFIX_PATH="/data/latentos/sdk_cpp:/data/latentos/sdk_runtime:/data/latentos/sdk_runtime/third_party"
 
 # Python
-export PYTHONPATH="/data/latentos/high_level_sdk_python/python/site-packages:/data/latentos/sdk_runtime/python/site-packages${PYTHONPATH:+:$PYTHONPATH}"
+export PYTHONPATH="/data/latentos/sdk_python/python/site-packages:/data/latentos/sdk_runtime/python/site-packages${PYTHONPATH:+:$PYTHONPATH}"
 ```
 
 先确认能 import：
 
 ```bash
-python3 -c 'from latentos_high_level_sdk import Client'
+python3 -c 'from latentos_sdk import Client'
 ```
+
+SDK 1.1 仍提供旧安装路径和 `high_level` 名称的兼容入口，仅用于旧项目迁移；新项目不要继续引用这些名称。
 
 检查安装结果：
 
 ```bash
 sudo ls -ld \
   /data/latentos/sdk_runtime \
-  /data/latentos/high_level_sdk_cpp \
-  /data/latentos/high_level_sdk_python
+  /data/latentos/sdk_cpp \
+  /data/latentos/sdk_python
 ```

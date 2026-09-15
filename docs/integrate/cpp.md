@@ -1,6 +1,6 @@
 # 在 C++ 工程中使用
 
-C++ High-level SDK 以 `core::Session` 管理连接，再按模块创建 Client。运动用 `motion::MotionClient`，电池用 `power::PowerClient`。不要再按旧文档去链接统一的 `latentos::high_level_sdk::Client`。
+C++ SDK 按模块提供 CMake package。示例采用一个 `core::Session` 加多个模块 Client：运动使用 `motion::MotionClient`，电源使用 `power::PowerClient`。这种写法同时适用于完整交付和模块裁剪交付。
 
 ## 最小工程
 
@@ -26,18 +26,18 @@ project(my_latentos_cpp_project LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(latentos_high_level_sdk_core CONFIG REQUIRED)
-find_package(latentos_high_level_sdk_motion CONFIG REQUIRED)
-find_package(latentos_high_level_sdk_power CONFIG REQUIRED)
+find_package(latentos_sdk_core CONFIG REQUIRED)
+find_package(latentos_sdk_motion CONFIG REQUIRED)
+find_package(latentos_sdk_power CONFIG REQUIRED)
 
 add_executable(my_latentos_app src/main.cc)
 target_link_libraries(my_latentos_app PRIVATE
-  latentos::high_level_sdk_motion
-  latentos::high_level_sdk_power)
+  latentos::sdk_motion
+  latentos::sdk_power)
 
 set(_latentos_rpath
-    "/data/latentos/high_level_sdk_cpp/lib"
-    "/data/latentos/high_level_sdk_cpp/lib64"
+    "/data/latentos/sdk_cpp/lib"
+    "/data/latentos/sdk_cpp/lib64"
     "/data/latentos/sdk_runtime/lib"
     "/data/latentos/sdk_runtime/lib64")
 
@@ -50,24 +50,24 @@ set_target_properties(my_latentos_app PROPERTIES
 
 ```bash
 cmake -S . -B build \
-  -DCMAKE_PREFIX_PATH="/data/latentos/high_level_sdk_cpp;/data/latentos/sdk_runtime;/data/latentos/sdk_runtime/third_party"
+  -DCMAKE_PREFIX_PATH="/data/latentos/sdk_cpp;/data/latentos/sdk_runtime;/data/latentos/sdk_runtime/third_party"
 cmake --build build -j
 ```
 
-可选模块包名：`latentos_high_level_sdk_telemetry`、`latentos_high_level_sdk_low_level`、`latentos_high_level_sdk_camera`、`latentos_high_level_sdk_nav`。
+可选模块包名：`latentos_sdk_telemetry`、`latentos_sdk_low_level`、`latentos_sdk_camera`、`latentos_sdk_nav`。
 
 ## 创建 Session 与 Client
 
 ```cpp
-#include <latentos/high_level_sdk/core/session.h>
-#include <latentos/high_level_sdk/motion/motion_client.h>
-#include <latentos/high_level_sdk/power/power_client.h>
+#include <latentos/sdk/core/session.h>
+#include <latentos/sdk/motion/motion_client.h>
+#include <latentos/sdk/power/power_client.h>
 
-latentos::high_level_sdk::SdkOptions options;
+latentos::sdk::SdkOptions options;
 options.client_config_path = "config/client.yaml";
-latentos::high_level_sdk::core::Session session(std::move(options));
-latentos::high_level_sdk::motion::MotionClient motion(session);
-latentos::high_level_sdk::power::PowerClient power(session);
+latentos::sdk::core::Session session(std::move(options));
+latentos::sdk::motion::MotionClient motion(session);
+latentos::sdk::power::PowerClient power(session);
 
 auto result = motion.SwitchGroup("stand", "");
 result = motion.SwitchGroup("locomotion", "default");
@@ -90,6 +90,8 @@ auto battery = power.GetLatestBattery();
 | `SendVelocity(x, y, yaw)` | 发送速度指令 |
 
 电源侧常用 `SubscribeBattery` / `GetLatestBattery`。
+
+完整模块交付也提供统一的 `latentos::sdk::Client`，可通过 `find_package(latentos_sdk CONFIG REQUIRED)` 和 `latentos::sdk` 使用。需要兼容模块裁剪或希望依赖更清晰时，推荐沿用本文的模块 Client 写法。
 
 ## 命令返回值
 
@@ -121,3 +123,7 @@ if (!result.ok) {
 ```
 
 出现问题时应记录 `result_code`、`message`、`command_id` 和 `operation_id`。
+
+## 旧名称兼容
+
+SDK 1.1 为 1.0.x 源码保留 `latentos_high_level_sdk*` CMake package、`<latentos/high_level_sdk/...>` 头文件和 `latentos::high_level_sdk` 命名空间别名。它们仅用于迁移；新代码使用本文中的规范名称。旧二进制程序不保证无需重新编译即可直接使用 1.1。

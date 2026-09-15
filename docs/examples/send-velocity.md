@@ -10,7 +10,7 @@ python3 examples/python/send_velocity.py 0 0 0.2 --client-config "$CLIENT"   # å
 ```
 
 ```python
-from latentos_high_level_sdk import Client
+from latentos_sdk import Client
 
 client = Client(client_config_path=client_config)
 try:
@@ -29,7 +29,7 @@ finally:
 ```
 
 ```cpp
-latentos::high_level_sdk::motion::MotionClient client(session);
+latentos::sdk::motion::MotionClient client(session);
 client.SetRemoteVelocityControl(false, {});
 client.SetVelocitySmoothing(false, {});
 client.SendVelocity(0.1, 0.0, 0.0);

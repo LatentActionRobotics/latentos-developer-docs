@@ -4,12 +4,12 @@ sidebar_label: 示例总览
 
 # 运行示例
 
-示例代码在 `latentos_high_level_sdk_example` 仓库中。先完成 [安装](/getting-started/install) 和 [连接配置](/getting-started/connect)，再在仓库根目录操作。
+示例代码在 `latentos_sdk_example` 仓库中。先完成 [安装](/getting-started/install) 和 [连接配置](/getting-started/connect)，再在仓库根目录操作。
 
 后文用 `$CLIENT` 表示：
 
 ```bash
-cd /path/to/latentos_high_level_sdk_example
+cd /path/to/latentos_sdk_example
 CLIENT="$PWD/config/echo/mode/client.yaml"
 ```
 
@@ -30,14 +30,14 @@ Python 与 C++ 同名示例的参数一致（`--client-config` 可选）。只�
 在仓库根目录执行，无需编译。需要 Python 3.9+，并已设置 `PYTHONPATH`。
 
 ```bash
-python3 -c 'from latentos_high_level_sdk import Client'
+python3 -c 'from latentos_sdk import Client'
 ```
 
 ## C++
 
 ```bash
-cd /path/to/latentos_high_level_sdk_example
-export CMAKE_PREFIX_PATH="/data/latentos/high_level_sdk_cpp:/data/latentos/sdk_runtime:/data/latentos/sdk_runtime/third_party"
+cd /path/to/latentos_sdk_example
+export CMAKE_PREFIX_PATH="/data/latentos/sdk_cpp:/data/latentos/sdk_runtime:/data/latentos/sdk_runtime/third_party"
 cmake -S examples/cpp -B build/examples
 cmake --build build/examples -j
 ```

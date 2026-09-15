@@ -47,30 +47,30 @@
 
 机上当时没有电池数据。确认 hardware interface 是否正在发布电池数据。`get_battery` 默认最多等约 5 秒。
 
-## `import latentos_high_level_sdk` 失败
+## `import latentos_sdk` 失败
 
 检查 `PYTHONPATH` 是否同时包含 SDK 和 Runtime 两个 `site-packages`：
 
 ```bash
 echo "$PYTHONPATH"
-find /data/latentos/high_level_sdk_python/python/site-packages \
-  -maxdepth 1 -name 'latentos_high_level_sdk*' -print
+find /data/latentos/sdk_python/python/site-packages \
+  -maxdepth 1 -name 'latentos_sdk*' -print
 ```
 
 ## CMake 找不到 SDK
 
-错误类似找不到 `latentos_high_level_sdk_core` 或模块包。确保 `CMAKE_PREFIX_PATH` 同时包含：
+错误类似找不到 `latentos_sdk_core` 或模块包。确保 `CMAKE_PREFIX_PATH` 同时包含：
 
 ```text
-/data/latentos/high_level_sdk_cpp
+/data/latentos/sdk_cpp
 /data/latentos/sdk_runtime
 /data/latentos/sdk_runtime/third_party
 ```
 
 ```bash
 echo "$CMAKE_PREFIX_PATH"
-find /data/latentos/high_level_sdk_cpp \
-  -iname '*latentos_high_level_sdk*Config*.cmake'
+find /data/latentos/sdk_cpp \
+  -iname '*latentos_sdk*Config*.cmake'
 ```
 
 ## 编译 example 报错
@@ -101,3 +101,7 @@ sudo apt-get install libgstrtspserver-1.0-0
 ```
 
 不要随意加 `--skip-system-check`，除非你明确知道本机已经具备这些库。
+
+## 旧工程仍使用 `high_level` 名称
+
+SDK 1.1 暂时保留旧 Python import、CMake package、头文件路径和 C++ 命名空间兼容层。旧源码可先在 1.1 上重新编译，再逐步改用规范名称；新工程直接使用本文档中的 `latentos_sdk` / `latentos::sdk` API。旧 C++ 二进制不保证直接兼容 1.1。

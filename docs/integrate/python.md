@@ -14,8 +14,8 @@ my_latentos_python_project/
 ## 配置环境
 
 ```bash
-export PYTHONPATH="/data/latentos/high_level_sdk_python/python/site-packages:/data/latentos/sdk_runtime/python/site-packages${PYTHONPATH:+:$PYTHONPATH}"
-python3 -c 'from latentos_high_level_sdk import Client'
+export PYTHONPATH="/data/latentos/sdk_python/python/site-packages:/data/latentos/sdk_runtime/python/site-packages${PYTHONPATH:+:$PYTHONPATH}"
+python3 -c 'from latentos_sdk import Client'
 ```
 
 需要 Python 3.9 或以上。不需要现场 `pip install`。
@@ -25,7 +25,7 @@ python3 -c 'from latentos_high_level_sdk import Client'
 `client_config_path` 必须指向有效的 Echo client yaml。用完后调用 `close()`。
 
 ```python
-from latentos_high_level_sdk import Client, CommandOptions
+from latentos_sdk import Client, CommandOptions
 
 client = Client(client_config_path="config/client.yaml")
 try:
@@ -56,3 +56,5 @@ finally:
 | `get_latest_battery()` | 读取本地缓存的最新电池状态 |
 
 命令类接口返回 `CommandResult`。至少同时检查 `ok` 和 `accepted`，不要只看 `ok`。字段含义见 [C++ 工程集成](/integrate/cpp#命令返回值)。
+
+SDK 1.1 仍提供 `latentos_high_level_sdk` 作为 `latentos_sdk` 的兼容 re-export，供 1.0.x 项目迁移。新代码统一从 `latentos_sdk` 导入。

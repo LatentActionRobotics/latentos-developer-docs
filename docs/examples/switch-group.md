@@ -18,7 +18,7 @@ python3 examples/python/switch_group.py motion_tracking backflip --client-config
 ```
 
 ```python
-from latentos_high_level_sdk import Client, CommandOptions
+from latentos_sdk import Client, CommandOptions
 
 client = Client(client_config_path=client_config)
 try:
@@ -42,13 +42,13 @@ finally:
 ```
 
 ```cpp
-#include <latentos/high_level_sdk/core/session.h>
-#include <latentos/high_level_sdk/motion/motion_client.h>
+#include <latentos/sdk/core/session.h>
+#include <latentos/sdk/motion/motion_client.h>
 
-latentos::high_level_sdk::core::Session session(std::move(sdk_options));
-latentos::high_level_sdk::motion::MotionClient client(session);
+latentos::sdk::core::Session session(std::move(sdk_options));
+latentos::sdk::motion::MotionClient client(session);
 
-latentos::high_level_sdk::CommandOptions command_options;
+latentos::sdk::CommandOptions command_options;
 command_options.timeout_ms = 1000;
 auto result = client.SwitchGroup("locomotion", "default", command_options);
 ```

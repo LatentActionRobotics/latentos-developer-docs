@@ -43,7 +43,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title={siteConfig.title}
-      description="LatentOS High-level SDK 使用文档">
+      description="LatentOS SDK 使用文档">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

@@ -16,7 +16,7 @@ python3 examples/python/subscribe_battery.py --client-config "$CLIENT"
 一次性读取会先 `subscribe_battery()`，再轮询 `get_latest_battery()`：
 
 ```python
-from latentos_high_level_sdk import Client
+from latentos_sdk import Client
 
 client = Client(client_config_path=client_config)
 try:
@@ -29,7 +29,7 @@ finally:
 持续订阅传入回调：
 
 ```python
-from latentos_high_level_sdk import BatteryStatus, Client
+from latentos_sdk import BatteryStatus, Client
 
 def on_battery(status: BatteryStatus) -> None:
     print(f"soc_percent={status.soc_percent} voltage_v={status.voltage_v}")
@@ -51,13 +51,13 @@ finally:
 C++ 使用 `power::PowerClient`：
 
 ```cpp
-#include <latentos/high_level_sdk/core/session.h>
-#include <latentos/high_level_sdk/power/power_client.h>
+#include <latentos/sdk/core/session.h>
+#include <latentos/sdk/power/power_client.h>
 
-latentos::high_level_sdk::SdkOptions sdk_options;
+latentos::sdk::SdkOptions sdk_options;
 sdk_options.client_config_path = client_config;
-latentos::high_level_sdk::core::Session session(std::move(sdk_options));
-latentos::high_level_sdk::power::PowerClient client(session);
+latentos::sdk::core::Session session(std::move(sdk_options));
+latentos::sdk::power::PowerClient client(session);
 
 client.SubscribeBattery({});
 auto battery = client.GetLatestBattery();

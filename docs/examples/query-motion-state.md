@@ -13,7 +13,7 @@ python3 examples/python/query_motion_state.py --client-config "$CLIENT"
 ```
 
 ```python
-from latentos_high_level_sdk import Client, QueryOptions
+from latentos_sdk import Client, QueryOptions
 
 client = Client(client_config_path=client_config)
 try:
@@ -33,13 +33,13 @@ finally:
 ```
 
 ```cpp
-#include <latentos/high_level_sdk/core/session.h>
-#include <latentos/high_level_sdk/motion/motion_client.h>
+#include <latentos/sdk/core/session.h>
+#include <latentos/sdk/motion/motion_client.h>
 
-latentos::high_level_sdk::core::Session session(std::move(sdk_options));
-latentos::high_level_sdk::motion::MotionClient client(session);
+latentos::sdk::core::Session session(std::move(sdk_options));
+latentos::sdk::motion::MotionClient client(session);
 
-latentos::high_level_sdk::QueryOptions query_options;
+latentos::sdk::QueryOptions query_options;
 query_options.timeout_ms = 1000;
 auto state = client.QueryMotionControlState(query_options);
 ```
