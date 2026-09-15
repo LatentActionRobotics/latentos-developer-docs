@@ -262,6 +262,7 @@ if (auto battery = power.GetLatestBattery();
 
 ## 下一步
 
+- [C++ API Reference](/api/cpp)：公开类、方法、数据类型和枚举索引
 - [在 C++ 工程中使用](/integrate/cpp)：完整的 CMake 与代码示例
 - [运行示例](/examples)：按模块验证安装和连接
 - [常见问题](/faq)：排查 CMake、动态库和连接问题

@@ -13,6 +13,20 @@ const sidebars: SidebarsConfig = {
       ],
     },
     'sdk/cpp',
+    {
+      type: 'category',
+      label: 'C++ API Reference',
+      items: [
+        'api/cpp/index',
+        'api/cpp/core',
+        'api/cpp/motion',
+        'api/cpp/telemetry',
+        'api/cpp/low-level',
+        'api/cpp/power',
+        'api/cpp/camera',
+        'api/cpp/nav',
+      ],
+    },
     'concepts/groups-and-policies',
     {
       type: 'category',

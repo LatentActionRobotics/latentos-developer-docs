@@ -10,6 +10,11 @@ const FeatureList = [
     description: '了解安装布局、模块划分、CMake target、API 调用模型与各模块能力。',
   },
   {
+    title: 'C++ API Reference',
+    to: '/api/cpp',
+    description: '查询公开类、方法、参数、返回值、数据类型和枚举。',
+  },
+  {
     title: '安装 SDK',
     to: '/getting-started/install',
     description: '先装 Runtime，再装 C++ 或 Python SDK。开发机与目标机架构、版本需要配套。',
