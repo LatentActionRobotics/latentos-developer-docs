@@ -114,12 +114,12 @@ const config: Config = {
           title: '社区',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/LatentActionRobotics',
+              label: '哔哩哔哩',
+              href: 'https://b23.tv/JO4jmnr',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/LatentActionRobotics',
+              label: '小红书',
+              href: 'https://xhslink.cn/o/4kNK31ik94N',
             },
             {
               label: 'X',
