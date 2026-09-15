@@ -13,9 +13,10 @@ LatentOS SDK 用来从开发机连上**已经在运行**的机器人或本机仿
 1. [前置条件](/getting-started/prerequisites)
 2. [安装 SDK](/getting-started/install)
 3. [连接机器人](/getting-started/connect)
-4. [Group 与 Policy](/concepts/groups-and-policies)
-5. [运行示例](/examples)
-6. 接到自己的工程：[C++](/integrate/cpp) 或 [Python](/integrate/python)
+4. [了解 C++ SDK](/sdk/cpp)
+5. [Group 与 Policy](/concepts/groups-and-policies)
+6. [运行示例](/examples)
+7. 接到自己的工程：[C++](/integrate/cpp) 或 [Python](/integrate/python)
 
 ## 两套语言的差异
 

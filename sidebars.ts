@@ -12,6 +12,7 @@ const sidebars: SidebarsConfig = {
         'getting-started/connect',
       ],
     },
+    'sdk/cpp',
     'concepts/groups-and-policies',
     {
       type: 'category',

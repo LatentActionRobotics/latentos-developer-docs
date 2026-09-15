@@ -2,6 +2,8 @@
 
 C++ SDK 按模块提供 CMake package。示例采用一个 `core::Session` 加多个模块 Client：运动使用 `motion::MotionClient`，电源使用 `power::PowerClient`。这种写法同时适用于完整交付和模块裁剪交付。
 
+模块能力、安装布局和完整 API 索引见 [C++ SDK 指南](/sdk/cpp)。
+
 ## 最小工程
 
 ```text
