@@ -14,9 +14,10 @@ const config: Config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
-  url: 'https://LatentActionRobotics.github.io',
+  url: 'https://latent-action.com',
   baseUrl: '/docs/',
-  trailingSlash: false,
+  // FTP/nginx serves directories with index.html; extensionless /intro → intro.html is not configured.
+  trailingSlash: true,
 
   organizationName: 'LatentActionRobotics',
   projectName: 'latentos-developer-docs',
