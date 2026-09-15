@@ -38,6 +38,8 @@ try:
 
     client.subscribe_battery()
     status = client.get_latest_battery()
+    if status is not None:
+        print(status.power_state)
 finally:
     client.close()
 ```
@@ -53,7 +55,7 @@ finally:
 | `set_remote_velocity_control(enabled)` | 开启或关闭遥控速度控制 |
 | `send_velocity(x, y, yaw)` | 发送速度指令 |
 | `subscribe_battery(callback=None)` | 订阅电池；可传入回调 |
-| `get_latest_battery()` | 读取本地缓存的最新电池状态 |
+| `get_latest_battery()` | 读取本地缓存的最新电池状态，包括 `power_state` |
 
 命令类接口返回 `CommandResult`。至少同时检查 `ok` 和 `accepted`，不要只看 `ok`。字段含义见 [C++ 工程集成](/integrate/cpp#命令返回值)。
 

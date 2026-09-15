@@ -78,6 +78,10 @@ motion.SendVelocity(0.1, 0.0, 0.0);
 
 power.SubscribeBattery({});
 auto battery = power.GetLatestBattery();
+if (battery && battery->power_state ==
+                   latentos::sdk::BatteryPowerState::Charging) {
+  // 电池正在充电。
+}
 ```
 
 常用运动接口：
@@ -91,7 +95,7 @@ auto battery = power.GetLatestBattery();
 | `SetRemoteVelocityControl(enabled)` | 开启或关闭遥控速度控制 |
 | `SendVelocity(x, y, yaw)` | 发送速度指令 |
 
-电源侧常用 `SubscribeBattery` / `GetLatestBattery`。
+电源侧常用 `SubscribeBattery` / `GetLatestBattery`；返回的 `BatteryStatus.power_state` 可判断整机处于充电、放电、未充电、已充满或未知状态。
 
 完整模块交付也提供统一的 `latentos::sdk::Client`，可通过 `find_package(latentos_sdk CONFIG REQUIRED)` 和 `latentos::sdk` 使用。需要兼容模块裁剪或希望依赖更清晰时，推荐沿用本文的模块 Client 写法。
 

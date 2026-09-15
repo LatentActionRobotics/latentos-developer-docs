@@ -17,7 +17,7 @@ CLIENT="$PWD/config/echo/mode/client.yaml"
 
 | 示例 | 功能 |
 | --- | --- |
-| [get_battery / subscribe_battery](/examples/battery) | 获取一次或持续订阅电池状态 |
+| [get_battery / subscribe_battery](/examples/battery) | 获取或订阅电量、电压、电流及充放电状态 |
 | [switch_group](/examples/switch-group) | 切换运动 group |
 | [query_motion_state](/examples/query-motion-state) | 查询当前运动控制状态（current/target group） |
 | [switch_policy](/examples/switch-policy) | 在当前 group 内切换 policy |

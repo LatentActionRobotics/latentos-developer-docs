@@ -142,7 +142,7 @@ IMU、GNSS、关节、电池及 PMU 状态等流式数据采用相同模式：
 power.SubscribeBattery({});
 auto battery = power.GetLatestBattery();
 if (battery && battery->ok && !battery->stale) {
-  // 使用 battery->soc_percent、voltage_v、current_a 等字段。
+  // 使用 battery->power_state、soc_percent、voltage_v、current_a 等字段。
 }
 ```
 
@@ -204,7 +204,7 @@ Group、Policy 规则见 [Group 与 Policy](/concepts/groups-and-policies)。
 | --- | --- |
 | `SubscribeSummary(callback)` / `GetLatestSummary()` | 整机电源摘要 |
 | `SubscribeStatus(callback)` / `GetLatestStatus()` | 电源轨、故障、风扇及固件状态 |
-| `SubscribeBattery(callback)` / `GetLatestBattery()` | 当前活动电池状态 |
+| `SubscribeBattery(callback)` / `GetLatestBattery()` | 当前活动电池的电量、电压、电流及充放电状态 |
 | `SubscribeEvent(callback)` / `GetLatestEvent()` | PMU 事件 |
 | `SetPowerRail()` | 开关指定电源轨 |
 | `SetPowerLight()` | 开关指定灯光 |
@@ -213,6 +213,30 @@ Group、Policy 规则见 [Group 与 Policy](/concepts/groups-and-policies)。
 | `QueryPowerVersion()` | 查询 PMU 固件版本 |
 
 电源控制会影响真实硬件。执行前应确认目标、当前状态以及现场安全条件，并检查 `PowerControlResult.ok`、`accepted` 和 `result_code`。
+
+#### 电池充放电状态
+
+`GetLatestBattery()` 返回的 `BatteryStatus.power_state` 是归一化后的整机状态：
+
+| 枚举值 | `ToString()` | 含义 |
+| --- | --- | --- |
+| `BatteryPowerState::Charging` | `charging` | 正在充电 |
+| `BatteryPowerState::Discharging` | `discharging` | 正在放电 |
+| `BatteryPowerState::NotCharging` | `not_charging` | 当前既未充电也未放电 |
+| `BatteryPowerState::Full` | `full` | 电池已充满 |
+| `BatteryPowerState::Unknown` | `unknown` | 数据过期、状态冲突或无法识别 |
+
+```cpp
+power.SubscribeBattery({});
+if (auto battery = power.GetLatestBattery();
+    battery && battery->ok && battery->present && !battery->stale) {
+  if (battery->power_state == latentos::sdk::BatteryPowerState::Charging) {
+    // 正在充电。
+  }
+}
+```
+
+这不是向机器人发起的独立查询：先调用 `SubscribeBattery()`，收到数据后再由 `GetLatestBattery()` 读取本地最新值。
 
 ### Camera
 
