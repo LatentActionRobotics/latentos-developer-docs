@@ -22,8 +22,9 @@ CLIENT="$PWD/config/echo/mode/client.yaml"
 | [query_motion_state](/examples/query-motion-state) | 查询当前运动控制状态（current/target group） |
 | [switch_policy](/examples/switch-policy) | 在当前 group 内切换 policy |
 | [send_velocity](/examples/send-velocity) | 发送 SE2 速度 |
+| [camera_*](/examples/camera) | 查询相机能力、热控件、开/停推流与流参数（C++） |
 
-Python 与 C++ 同名示例的参数一致（`--client-config` 可选）。只读数据都成对提供 `get_*`（一次性）与 `subscribe_*`（持续）。
+前五项 Python 与 C++ 同名示例的参数一致（`--client-config` 可选）。只读数据都成对提供 `get_*`（一次性）与 `subscribe_*`（持续）。相机示例目前仅有 C++。
 
 ## Python
 
@@ -64,7 +65,7 @@ build/examples/switch_policy
 | `telemetry` | `get_imu`、`subscribe_imu`、`get_gnss`、`subscribe_gnss` | IMU / GNSS |
 | `low_level` | `get_joint_state`、`subscribe_joint_state`、`send_joint_command` | 关节状态；`send_joint_command` 是开环 MIT 命令，可能让机器摔倒 |
 | `power` | `get_power_*` / `subscribe_power_*`、`power_control` | PMU 只读与控制；`power_control` 会开关电源/灯/风扇 |
-| `camera` | `camera_capabilities`、`camera_set_control`、`camera_set_stream`、`camera_set_stream_params` | 相机能力、控件、推流 |
+| `camera` | `camera_capabilities`、`camera_set_control`、`camera_set_stream`、`camera_set_stream_params` | 见 [相机控制](/examples/camera) |
 | `nav` | `advertise_pointcloud` | 上报点云流地址 |
 
 典型上电后发速度：

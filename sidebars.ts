@@ -38,6 +38,7 @@ const sidebars: SidebarsConfig = {
         'examples/query-motion-state',
         'examples/switch-policy',
         'examples/send-velocity',
+        'examples/camera',
       ],
     },
     {
