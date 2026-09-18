@@ -10,7 +10,7 @@ sidebar_label: 相机控制
 
 API 类型与结果码见 [Camera API](/api/cpp/camera)；模块总览见 [C++ SDK 指南](/sdk/cpp)。
 
-若在板端直接使用 OAK-D / DepthAI 等厂商 SDK，见 [外设](/peripherals)（与本页的 LatentOS 相机 API 不同）。
+若在板端直接使用 OAK-D / DepthAI 等厂商 SDK，见 [选装设备](/peripherals)（与本页的 LatentOS 相机 API 不同）。
 
 先完成 [安装](/getting-started/install) 和 [连接配置](/getting-started/connect)。后文 `$CLIENT` 含义见 [示例总览](/examples)。
 

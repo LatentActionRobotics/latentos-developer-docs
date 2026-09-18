@@ -1,8 +1,8 @@
 ---
-sidebar_label: DepthAI / OAK-D
+sidebar_label: DepthAI / OAK-D 深度相机 SDK 安装
 ---
 
-# DepthAI / OAK-D
+# DepthAI / OAK-D 深度相机 SDK 安装
 
 本页将说明在已验证的板卡与系统镜像上，安装 / 使用 Luxonis DepthAI，并对 OAK 系列深度相机做基本功能验证。
 

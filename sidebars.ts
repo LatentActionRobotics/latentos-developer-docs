@@ -51,7 +51,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '外设',
+      label: '选装设备',
       items: [
         'peripherals/index',
         'peripherals/depthai-oak-d',

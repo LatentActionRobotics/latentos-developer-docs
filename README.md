@@ -15,7 +15,7 @@
 | `docs/concepts/` | Group 与 Policy |
 | `docs/examples/` | 官方示例 |
 | `docs/integrate/` | 接入自有 C++ / Python 工程 |
-| `docs/peripherals/` | 外设驱动 / 厂商 SDK（深度相机、雷达等） |
+| `docs/peripherals/` | 选装设备驱动 / 厂商 SDK（深度相机、雷达等） |
 | `docs/faq.md` | 常见问题 |
 
 ## 环境要求
