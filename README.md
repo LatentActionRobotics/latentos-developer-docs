@@ -15,7 +15,10 @@
 | `docs/concepts/` | Group 与 Policy |
 | `docs/examples/` | 官方示例 |
 | `docs/integrate/` | 接入自有 C++ / Python 工程 |
+| `docs/peripherals/` | 外设驱动 / 厂商 SDK（深度相机、雷达等） |
 | `docs/faq.md` | 常见问题 |
+
+文档插图约定：需要图片时在对应分类下建 `images/`，Markdown 用相对路径引用（如 `./images/foo.png`）。
 
 ## 环境要求
 

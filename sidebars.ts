@@ -49,6 +49,14 @@ const sidebars: SidebarsConfig = {
         'integrate/python',
       ],
     },
+    {
+      type: 'category',
+      label: '外设',
+      items: [
+        'peripherals/index',
+        'peripherals/depthai-oak-d',
+      ],
+    },
     'faq',
   ],
 };
