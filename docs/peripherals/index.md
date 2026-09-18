@@ -14,20 +14,10 @@ sidebar_label: 外设总览
 | 示例 | [运行示例](/examples)、[相机控制](/examples/camera) | 各外设专题页（安装、采图、FAQ） |
 | 责任边界 | LatentOS 公开接口与配套示例 | 以外设厂商上游文档为准；本站提供已验证配置与辅助包说明 |
 
-后续专题会陆续挂到本目录下。撰写时请在对应目录放图，用相对路径引用（见下）。
-
-## 图片约定
-
-需要插图时，在**同级文档目录**下使用 `images/`，文章中用相对路径引用，例如：
-
-```markdown
-![设备接线示意](./images/wiring.png)
-```
-
-本目录的配图放在 [`images/`](./images/)。
+后续专题会陆续挂到本目录下。撰写与配图约定见仓库根目录的 `CONTRIBUTING.md`（文档提交规范）。
 
 ## 专题列表
 
 | 专题 | 状态 |
 | --- | --- |
-| [DepthAI / OAK-D](/peripherals/depthai-oak-d) | 占位，待补充 |
+| [DepthAI / OAK-D](/peripherals/depthai-oak-d) | 已发布 |

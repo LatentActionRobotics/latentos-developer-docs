@@ -18,8 +18,6 @@
 | `docs/peripherals/` | 外设驱动 / 厂商 SDK（深度相机、雷达等） |
 | `docs/faq.md` | 常见问题 |
 
-文档插图约定：需要图片时在对应分类下建 `images/`，Markdown 用相对路径引用（如 `./images/foo.png`）。
-
 ## 环境要求
 
 - Node.js ≥ 20
@@ -75,4 +73,4 @@ npm run serve
 
 ## 贡献
 
-文档为 Markdown，主要改动在 `docs/`。提交前建议本地 `npm run build` 确认无坏链。
+文档为 Markdown，主要改动在 `docs/`。协作约定、插图路径、坏链与构建检查等见 [文档提交规范](./CONTRIBUTING.md)。
