@@ -2,6 +2,13 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
   docsSidebar: [
+    {
+      type: 'category',
+      label: '产品介绍',
+      items: [
+        'product/p30',
+      ],
+    },
     'intro',
     {
       type: 'category',

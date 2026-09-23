@@ -10,6 +10,7 @@
 
 | 目录 | 内容 |
 | --- | --- |
+| `docs/product/` | 产品介绍（型号与参数） |
 | `docs/getting-started/` | 前置条件、安装、连接 |
 | `docs/sdk/` | C++ SDK 说明 |
 | `docs/concepts/` | Group 与 Policy |
