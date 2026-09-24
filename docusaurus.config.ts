@@ -83,7 +83,7 @@ const config: Config = {
           label: '文档',
         },
         {
-          href: 'https://github.com/LatentActionRobotics',
+          href: 'https://github.com/LatentActionRobotics/latentos-developer-docs',
           position: 'right',
           className: 'header-github-link',
           'aria-label': 'GitHub',
@@ -136,7 +136,11 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/LatentActionRobotics/latentos-developer-docs',
+              href: 'https://github.com/LatentActionRobotics',
+            },
+            {
+              label: 'Gitee',
+              href: 'https://gitee.com/LatentActionRobotics',
             },
           ],
         },
