@@ -9,6 +9,10 @@
  *   #2559A2  saturated royal blue (bottom-left)
  *   #48509D  indigo mid-tone
  *   #694899  violet highlight (top-right)
+ *
+ * Light UI primary leans violet/indigo to match dark mode and the logo
+ * highlight; blue remains in the hero gradient so the brand stays
+ * blue→indigo→violet rather than flat purple.
  */
 
 :root {
@@ -22,18 +26,20 @@
     var(--latentos-blue) 100%
   );
 
-  --ifm-color-primary: #2559a2;
-  --ifm-color-primary-dark: #215092;
-  --ifm-color-primary-darker: #1f4c8a;
-  --ifm-color-primary-darkest: #1a3e71;
-  --ifm-color-primary-light: #3b6aab;
-  --ifm-color-primary-lighter: #4672b0;
-  --ifm-color-primary-lightest: #668bbe;
+  /* Light: violet-indigo primary (readable on white, kin to dark lavender) */
+  --ifm-color-primary: #5c4d98;
+  --ifm-color-primary-dark: #53468a;
+  --ifm-color-primary-darker: #4e4282;
+  --ifm-color-primary-darkest: #40366b;
+  --ifm-color-primary-light: #6d5fa3;
+  --ifm-color-primary-lighter: #7669a9;
+  --ifm-color-primary-lightest: #9288bc;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(37, 89, 162, 0.08);
+  --docusaurus-highlighted-code-line-bg: rgba(92, 77, 152, 0.1);
 }
 
 [data-theme='dark'] {
+  /* Dark: soft lavender for contrast on dark surfaces */
   --ifm-color-primary: #9c90d5;
   --ifm-color-primary-dark: #8c82c0;
   --ifm-color-primary-darker: #857ab5;
@@ -135,7 +141,7 @@
   border-bottom-left-radius: 0.45rem;
   border-bottom-right-radius: 0.45rem;
   color: #fff;
-  box-shadow: 0 1px 2px rgba(37, 89, 162, 0.28);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--ifm-color-primary) 35%, transparent);
 }
 
 .tabs-container > .margin-top--md {
