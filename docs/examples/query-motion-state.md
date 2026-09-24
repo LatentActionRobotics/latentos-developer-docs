@@ -6,7 +6,11 @@
 
 底层 API 为 `query_motion_control_state` / `QueryMotionControlState`。
 
-## Python
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs groupId="sdk-lang">
+  <TabItem value="python" label="Python" default>
 
 ```bash
 python3 examples/python/query_motion_state.py --client-config "$CLIENT"
@@ -26,7 +30,8 @@ finally:
     client.close()
 ```
 
-## C++
+  </TabItem>
+  <TabItem value="cpp" label="C++">
 
 ```bash
 ./build/examples/query_motion_state --client-config "$CLIENT"
@@ -43,3 +48,6 @@ latentos::sdk::QueryOptions query_options;
 query_options.timeout_ms = 1000;
 auto state = client.QueryMotionControlState(query_options);
 ```
+
+  </TabItem>
+</Tabs>

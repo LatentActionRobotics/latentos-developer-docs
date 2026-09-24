@@ -12,7 +12,11 @@
 | `full` | 电池已充满 |
 | `unknown` | 数据过期、底层状态冲突或无法识别 |
 
-## Python
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs groupId="sdk-lang">
+  <TabItem value="python" label="Python" default>
 
 ```bash
 python3 examples/python/get_battery.py --client-config "$CLIENT"
@@ -56,7 +60,8 @@ finally:
     client.close()
 ```
 
-## C++
+  </TabItem>
+  <TabItem value="cpp" label="C++">
 
 ```bash
 ./build/examples/get_battery --client-config "$CLIENT"
@@ -87,4 +92,9 @@ if (battery) {
 }
 ```
 
-`GetLatestBattery()` 读取订阅缓存；尚未收到第一帧时返回空值。判断充放电状态前还应检查 `ok`、`stale` 和 `present`。超时且没有数据时，检查目标机 hardware interface 是否正在发布电池数据。
+`GetLatestBattery()` 读取订阅缓存；尚未收到第一帧时返回空值。判断充放电状态前还应检查 `ok`、`stale` 和 `present`。
+
+  </TabItem>
+</Tabs>
+
+超时且没有数据时，检查目标机 hardware interface 是否正在发布电池数据。

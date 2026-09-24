@@ -2,7 +2,11 @@
 
 关闭遥控速度与速度平滑后，约 10Hz 发 10 帧 SE2 速度。一般先切到 `locomotion`。参数为 `x` `y` `yaw`。
 
-## Python
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs groupId="sdk-lang">
+  <TabItem value="python" label="Python" default>
 
 ```bash
 python3 examples/python/send_velocity.py 0.1 0 0 --client-config "$CLIENT"
@@ -21,7 +25,8 @@ finally:
     client.close()
 ```
 
-## C++
+  </TabItem>
+  <TabItem value="cpp" label="C++">
 
 ```bash
 ./build/examples/send_velocity 0.1 0 0 --client-config "$CLIENT"
@@ -34,6 +39,9 @@ client.SetRemoteVelocityControl(false, {});
 client.SetVelocitySmoothing(false, {});
 client.SendVelocity(0.1, 0.0, 0.0);
 ```
+
+  </TabItem>
+</Tabs>
 
 典型上电后再发速度：
 

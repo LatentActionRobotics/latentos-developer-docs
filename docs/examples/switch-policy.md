@@ -4,7 +4,11 @@
 
 用法：`switch_policy <policy> [--client-config PATH]`
 
-## Python
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs groupId="sdk-lang">
+  <TabItem value="python" label="Python" default>
 
 ```bash
 python3 examples/python/switch_policy.py default --client-config "$CLIENT"
@@ -24,7 +28,8 @@ finally:
     client.close()
 ```
 
-## C++
+  </TabItem>
+  <TabItem value="cpp" label="C++">
 
 ```bash
 ./build/examples/switch_policy default --client-config "$CLIENT"
@@ -35,3 +40,6 @@ finally:
 ```cpp
 auto result = client.SwitchCurrentPolicy("policy2", command_options);
 ```
+
+  </TabItem>
+</Tabs>

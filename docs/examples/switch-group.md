@@ -4,7 +4,11 @@
 
 用法：`switch_group <group> [policy] [--client-config PATH]`
 
-## Python
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs groupId="sdk-lang">
+  <TabItem value="python" label="Python" default>
 
 ```bash
 python3 examples/python/switch_group.py standby --client-config "$CLIENT"
@@ -28,7 +32,8 @@ finally:
     client.close()
 ```
 
-## C++
+  </TabItem>
+  <TabItem value="cpp" label="C++">
 
 ```bash
 ./build/examples/switch_group standby --client-config "$CLIENT"
@@ -52,6 +57,9 @@ latentos::sdk::CommandOptions command_options;
 command_options.timeout_ms = 1000;
 auto result = client.SwitchGroup("locomotion", "default", command_options);
 ```
+
+  </TabItem>
+</Tabs>
 
 典型上电：
 
