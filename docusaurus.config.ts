@@ -4,6 +4,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+const baseUrl = '/docs/';
+
 const config: Config = {
   title: 'LatentOS Developer Center',
   tagline: 'LatentOS 开发者文档',
@@ -15,7 +17,7 @@ const config: Config = {
   },
 
   url: 'https://latent-action.com',
-  baseUrl: '/docs/',
+  baseUrl,
   // FTP/nginx serves directories with index.html; extensionless /intro → intro.html is not configured.
   trailingSlash: true,
 
@@ -93,6 +95,14 @@ const config: Config = {
     footer: {
       style: 'dark',
       links: [
+        {
+          title: ' ',
+          items: [
+            {
+              html: `<a class="footer-brand-logo" href="https://latent-action.com" target="_blank" rel="noreferrer noopener" aria-label="潜行未来机器人"><img src="${baseUrl}img/latent-action-robotics.png" alt="潜行未来机器人 Latent-Action Robotics" width="198" height="50" /></a>`,
+            },
+          ],
+        },
         {
           title: '快速阅读',
           items: [

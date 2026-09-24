@@ -171,3 +171,20 @@
   color: #1a1528;
   box-shadow: none;
 }
+
+/* Footer brand mark (leftmost column) */
+.footer-brand-logo {
+  display: inline-block;
+  line-height: 0;
+}
+
+.footer-brand-logo img {
+  display: block;
+  width: min(198px, 100%);
+  height: auto;
+}
+
+.footer__col:has(.footer-brand-logo) .footer__title {
+  /* Keep vertical slot so the logo lines up with sibling link lists */
+  visibility: hidden;
+}
