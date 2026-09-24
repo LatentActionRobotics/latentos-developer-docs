@@ -45,4 +45,3 @@ npm run build
 
 - 提交信息简洁说明「为什么改」，可参考现有风格：`docs:` / `feat:` / `fix:` 等前缀。
 - 不要提交 `.env`、密钥或本地构建产物 `build/`。
-- 发版：推送到 GitHub `main` 会触发 FTP 部署；内网 Gitea 若已关闭 Actions，仅推 Gitea 不会上线。
