@@ -16,7 +16,44 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs groupId="sdk-lang">
-  <TabItem value="python" label="Python" default>
+  <TabItem value="cpp" label="C++" default>
+
+
+```bash
+./build/examples/get_battery --client-config "$CLIENT"
+./build/examples/subscribe_battery --client-config "$CLIENT"
+```
+
+C++ 使用 `power::PowerClient`：
+
+```cpp showLineNumbers
+#include <latentos/sdk/core/session.h>
+#include <latentos/sdk/power/power_client.h>
+
+#include <iostream>
+
+latentos::sdk::SdkOptions sdk_options;
+sdk_options.client_config_path = client_config;
+latentos::sdk::core::Session session(std::move(sdk_options));
+latentos::sdk::power::PowerClient client(session);
+
+client.SubscribeBattery({});
+auto battery = client.GetLatestBattery();
+if (battery) {
+  std::cout << "power_state="
+            << latentos::sdk::ToString(battery->power_state) << '\n';
+  if (battery->power_state == latentos::sdk::BatteryPowerState::Charging) {
+    // 电池正在充电。
+  }
+}
+```
+
+`GetLatestBattery()` 读取订阅缓存；尚未收到第一帧时返回空值。判断充放电状态前还应检查 `ok`、`stale` 和 `present`。
+
+  </TabItem>
+
+  <TabItem value="python" label="Python">
+
 
 ```bash
 python3 examples/python/get_battery.py --client-config "$CLIENT"
@@ -59,40 +96,6 @@ try:
 finally:
     client.close()
 ```
-
-  </TabItem>
-  <TabItem value="cpp" label="C++">
-
-```bash
-./build/examples/get_battery --client-config "$CLIENT"
-./build/examples/subscribe_battery --client-config "$CLIENT"
-```
-
-C++ 使用 `power::PowerClient`：
-
-```cpp showLineNumbers
-#include <latentos/sdk/core/session.h>
-#include <latentos/sdk/power/power_client.h>
-
-#include <iostream>
-
-latentos::sdk::SdkOptions sdk_options;
-sdk_options.client_config_path = client_config;
-latentos::sdk::core::Session session(std::move(sdk_options));
-latentos::sdk::power::PowerClient client(session);
-
-client.SubscribeBattery({});
-auto battery = client.GetLatestBattery();
-if (battery) {
-  std::cout << "power_state="
-            << latentos::sdk::ToString(battery->power_state) << '\n';
-  if (battery->power_state == latentos::sdk::BatteryPowerState::Charging) {
-    // 电池正在充电。
-  }
-}
-```
-
-`GetLatestBattery()` 读取订阅缓存；尚未收到第一帧时返回空值。判断充放电状态前还应检查 `ok`、`stale` 和 `present`。
 
   </TabItem>
 </Tabs>

@@ -84,3 +84,84 @@
 .header-github-link svg {
   display: none;
 }
+
+/* Language Tabs: segmented control instead of bare underline */
+.tabs-container {
+  margin-top: 1.25rem;
+}
+
+.tabs-container .tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  width: auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.25rem;
+  list-style: none;
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 0.65rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.tabs-container .tabs .tabs__item {
+  margin: 0;
+  padding: 0.45rem 1.1rem;
+  border: 1px solid transparent;
+  border-radius: 0.45rem;
+  border-bottom: 1px solid transparent;
+  color: var(--ifm-color-emphasis-700);
+  font-weight: 600;
+  line-height: 1.3;
+  transition:
+    background-color var(--ifm-transition-fast) var(--ifm-transition-timing-default),
+    color var(--ifm-transition-fast) var(--ifm-transition-timing-default),
+    border-color var(--ifm-transition-fast) var(--ifm-transition-timing-default),
+    box-shadow var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+}
+
+.tabs-container .tabs .tabs__item:hover {
+  background-color: var(--ifm-color-emphasis-200);
+  color: var(--ifm-font-color-base);
+}
+
+.tabs-container .tabs .tabs__item--active,
+.tabs-container .tabs .tabs__item--active:hover {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary-dark);
+  border-bottom-color: var(--ifm-color-primary-dark);
+  border-bottom-left-radius: 0.45rem;
+  border-bottom-right-radius: 0.45rem;
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(37, 89, 162, 0.28);
+}
+
+.tabs-container > .margin-top--md {
+  margin-top: 0.85rem;
+}
+
+[data-theme='dark'] .tabs-container .tabs {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--ifm-color-emphasis-300);
+  box-shadow: none;
+}
+
+[data-theme='dark'] .tabs-container .tabs .tabs__item {
+  color: var(--ifm-color-emphasis-600);
+}
+
+[data-theme='dark'] .tabs-container .tabs .tabs__item:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--ifm-font-color-base);
+}
+
+[data-theme='dark'] .tabs-container .tabs .tabs__item--active,
+[data-theme='dark'] .tabs-container .tabs .tabs__item--active:hover {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary-dark);
+  border-bottom-color: var(--ifm-color-primary-dark);
+  color: #1a1528;
+  box-shadow: none;
+}

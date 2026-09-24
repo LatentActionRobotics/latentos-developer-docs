@@ -11,18 +11,18 @@
 
 ## 开发机软件
 
-- **Python**：3.9 或以上（只用 Python SDK 时）
-
-  ```bash
-  python3 --version
-  ```
-
 - **C++**：CMake 3.20+、C++20 编译器；编译示例建议 gcc / g++ 13+（只用 C++ SDK 时）
 
   ```bash
   cmake --version
   gcc --version
   g++ --version
+  ```
+
+- **Python**：3.9 或以上（只用 Python SDK 时）
+
+  ```bash
+  python3 --version
   ```
 
 ## 交付物

@@ -6,7 +6,25 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs groupId="sdk-lang">
-  <TabItem value="python" label="Python" default>
+  <TabItem value="cpp" label="C++" default>
+
+
+```bash
+./build/examples/send_velocity 0.1 0 0 --client-config "$CLIENT"
+./build/examples/send_velocity 0 0 0.2 --client-config "$CLIENT"
+```
+
+```cpp showLineNumbers
+latentos::sdk::motion::MotionClient client(session);
+client.SetRemoteVelocityControl(false, {});
+client.SetVelocitySmoothing(false, {});
+client.SendVelocity(0.1, 0.0, 0.0);
+```
+
+  </TabItem>
+
+  <TabItem value="python" label="Python">
+
 
 ```bash
 python3 examples/python/send_velocity.py 0.1 0 0 --client-config "$CLIENT"
@@ -23,21 +41,6 @@ try:
     client.send_velocity(0.1, 0.0, 0.0)
 finally:
     client.close()
-```
-
-  </TabItem>
-  <TabItem value="cpp" label="C++">
-
-```bash
-./build/examples/send_velocity 0.1 0 0 --client-config "$CLIENT"
-./build/examples/send_velocity 0 0 0.2 --client-config "$CLIENT"
-```
-
-```cpp showLineNumbers
-latentos::sdk::motion::MotionClient client(session);
-client.SetRemoteVelocityControl(false, {});
-client.SetVelocitySmoothing(false, {});
-client.SendVelocity(0.1, 0.0, 0.0);
 ```
 
   </TabItem>

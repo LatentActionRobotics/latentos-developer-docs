@@ -10,7 +10,29 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs groupId="sdk-lang">
-  <TabItem value="python" label="Python" default>
+  <TabItem value="cpp" label="C++" default>
+
+
+```bash
+./build/examples/query_motion_state --client-config "$CLIENT"
+```
+
+```cpp showLineNumbers
+#include <latentos/sdk/core/session.h>
+#include <latentos/sdk/motion/motion_client.h>
+
+latentos::sdk::core::Session session(std::move(sdk_options));
+latentos::sdk::motion::MotionClient client(session);
+
+latentos::sdk::QueryOptions query_options;
+query_options.timeout_ms = 1000;
+auto state = client.QueryMotionControlState(query_options);
+```
+
+  </TabItem>
+
+  <TabItem value="python" label="Python">
+
 
 ```bash
 python3 examples/python/query_motion_state.py --client-config "$CLIENT"
@@ -28,25 +50,6 @@ try:
     )
 finally:
     client.close()
-```
-
-  </TabItem>
-  <TabItem value="cpp" label="C++">
-
-```bash
-./build/examples/query_motion_state --client-config "$CLIENT"
-```
-
-```cpp showLineNumbers
-#include <latentos/sdk/core/session.h>
-#include <latentos/sdk/motion/motion_client.h>
-
-latentos::sdk::core::Session session(std::move(sdk_options));
-latentos::sdk::motion::MotionClient client(session);
-
-latentos::sdk::QueryOptions query_options;
-query_options.timeout_ms = 1000;
-auto state = client.QueryMotionControlState(query_options);
 ```
 
   </TabItem>

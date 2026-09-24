@@ -24,15 +24,7 @@ CLIENT="$PWD/config/echo/mode/client.yaml"
 | [send_velocity](/examples/send-velocity) | 发送 SE2 速度 |
 | [camera_*](/examples/camera) | 查询相机能力、热控件、开/停推流与流参数（C++） |
 
-前五项 Python 与 C++ 同名示例的参数一致（`--client-config` 可选）。只读数据都成对提供 `get_*`（一次性）与 `subscribe_*`（持续）。相机示例目前仅有 C++。
-
-## Python
-
-在仓库根目录执行，无需编译。需要 Python 3.9+，并已设置 `PYTHONPATH`。
-
-```bash
-python3 -c 'from latentos_sdk import Client'
-```
+前五项 C++ 与 Python 同名示例的参数一致（`--client-config` 可选）。只读数据都成对提供 `get_*`（一次性）与 `subscribe_*`（持续）。相机示例目前仅有 C++。
 
 ## C++
 
@@ -54,6 +46,14 @@ build/examples/send_velocity
 build/examples/switch_group
 build/examples/query_motion_state
 build/examples/switch_policy
+```
+
+## Python
+
+在仓库根目录执行，无需编译。需要 Python 3.9+，并已设置 `PYTHONPATH`。
+
+```bash
+python3 -c 'from latentos_sdk import Client'
 ```
 
 ## 其他 C++ 模块
