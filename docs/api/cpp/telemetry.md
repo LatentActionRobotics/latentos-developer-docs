@@ -15,7 +15,7 @@ target_link_libraries(my_app PRIVATE latentos::sdk_telemetry)
 
 类：`latentos::sdk::telemetry::TelemetryClient`
 
-```cpp
+```cpp showLineNumbers
 explicit TelemetryClient(core::Session& session);
 
 void SubscribeImu(ImuCallback callback);

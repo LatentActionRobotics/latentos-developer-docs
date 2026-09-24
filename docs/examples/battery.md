@@ -23,7 +23,7 @@ python3 examples/python/subscribe_battery.py --client-config "$CLIENT"
 
 一次性读取会先 `subscribe_battery()`，再轮询 `get_latest_battery()`：
 
-```python
+```python showLineNumbers
 from latentos_sdk import BatteryPowerState, Client
 
 client = Client(client_config_path=client_config)
@@ -40,7 +40,7 @@ finally:
 
 持续订阅传入回调：
 
-```python
+```python showLineNumbers
 from latentos_sdk import BatteryStatus, Client
 
 def on_battery(status: BatteryStatus) -> None:
@@ -65,7 +65,7 @@ finally:
 
 C++ 使用 `power::PowerClient`：
 
-```cpp
+```cpp showLineNumbers
 #include <latentos/sdk/core/session.h>
 #include <latentos/sdk/power/power_client.h>
 

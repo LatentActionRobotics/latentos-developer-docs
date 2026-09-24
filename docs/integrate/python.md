@@ -24,7 +24,7 @@ python3 -c 'from latentos_sdk import Client'
 
 `client_config_path` 必须指向有效的 Echo client yaml。用完后调用 `close()`。
 
-```python
+```python showLineNumbers
 from latentos_sdk import Client, CommandOptions
 
 client = Client(client_config_path="config/client.yaml")

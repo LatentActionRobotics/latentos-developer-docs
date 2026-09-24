@@ -75,7 +75,7 @@ target_link_libraries(my_app PRIVATE
 
 一个进程通常创建一个 `core::Session`，再把它共享给需要的模块 Client。YAML 路径不能为空，且 Session 的生命周期必须覆盖各模块 Client。
 
-```cpp
+```cpp showLineNumbers
 #include <latentos/sdk/core/session.h>
 #include <latentos/sdk/motion/motion_client.h>
 #include <latentos/sdk/power/power_client.h>
@@ -101,7 +101,7 @@ find_package(latentos_sdk CONFIG REQUIRED)
 target_link_libraries(my_app PRIVATE latentos::sdk)
 ```
 
-```cpp
+```cpp showLineNumbers
 #include <latentos/sdk/client.h>
 
 latentos::sdk::Client client(std::move(options));
@@ -138,7 +138,7 @@ IMU、GNSS、关节、电池及 PMU 状态等流式数据采用相同模式：
 
 `GetLatest*()` 返回 `std::optional<T>`；尚未收到第一条数据时为空。它读取本地缓存，不会主动向机器狗发起一次查询。
 
-```cpp
+```cpp showLineNumbers
 power.SubscribeBattery({});
 auto battery = power.GetLatestBattery();
 if (battery && battery->ok && !battery->stale) {
@@ -226,7 +226,7 @@ Group、Policy 规则见 [Group 与 Policy](/concepts/groups-and-policies)。
 | `BatteryPowerState::Full` | `full` | 电池已充满 |
 | `BatteryPowerState::Unknown` | `unknown` | 数据过期、状态冲突或无法识别 |
 
-```cpp
+```cpp showLineNumbers
 power.SubscribeBattery({});
 if (auto battery = power.GetLatestBattery();
     battery && battery->ok && battery->present && !battery->stale) {

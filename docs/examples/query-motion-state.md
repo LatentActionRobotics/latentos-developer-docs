@@ -12,7 +12,7 @@
 python3 examples/python/query_motion_state.py --client-config "$CLIENT"
 ```
 
-```python
+```python showLineNumbers
 from latentos_sdk import Client, QueryOptions
 
 client = Client(client_config_path=client_config)
@@ -32,7 +32,7 @@ finally:
 ./build/examples/query_motion_state --client-config "$CLIENT"
 ```
 
-```cpp
+```cpp showLineNumbers
 #include <latentos/sdk/core/session.h>
 #include <latentos/sdk/motion/motion_client.h>
 

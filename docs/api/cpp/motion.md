@@ -15,7 +15,7 @@ target_link_libraries(my_app PRIVATE latentos::sdk_motion)
 
 类：`latentos::sdk::motion::MotionClient`
 
-```cpp
+```cpp showLineNumbers
 explicit MotionClient(core::Session& session);
 
 CommandResult SwitchGroup(std::string target_group,

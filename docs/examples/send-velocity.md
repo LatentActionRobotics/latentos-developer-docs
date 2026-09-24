@@ -9,7 +9,7 @@ python3 examples/python/send_velocity.py 0.1 0 0 --client-config "$CLIENT"
 python3 examples/python/send_velocity.py 0 0 0.2 --client-config "$CLIENT"   # 原地左转
 ```
 
-```python
+```python showLineNumbers
 from latentos_sdk import Client
 
 client = Client(client_config_path=client_config)
@@ -28,7 +28,7 @@ finally:
 ./build/examples/send_velocity 0 0 0.2 --client-config "$CLIENT"
 ```
 
-```cpp
+```cpp showLineNumbers
 latentos::sdk::motion::MotionClient client(session);
 client.SetRemoteVelocityControl(false, {});
 client.SetVelocitySmoothing(false, {});

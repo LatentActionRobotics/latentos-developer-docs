@@ -42,7 +42,7 @@ const SdkOptions& options() const;
 
 Session 表示一组共享连接配置。模块 Client 保存对 Session 的引用，因此 Session 必须比所有使用它的模块 Client 更晚销毁。
 
-```cpp
+```cpp showLineNumbers
 namespace sdk = latentos::sdk;
 
 sdk::SdkOptions options;

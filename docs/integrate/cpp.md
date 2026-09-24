@@ -60,7 +60,7 @@ cmake --build build -j
 
 ## 创建 Session 与 Client
 
-```cpp
+```cpp showLineNumbers
 #include <latentos/sdk/core/session.h>
 #include <latentos/sdk/motion/motion_client.h>
 #include <latentos/sdk/power/power_client.h>
@@ -115,7 +115,7 @@ group、policy 和控制开关接口返回 `CommandResult`。常用字段：
 
 `ok=true` 只表示通信和回复解析成功，不等于机器已经执行成功。至少应同时检查 `ok` 和 `accepted`：
 
-```cpp
+```cpp showLineNumbers
 auto result = motion.SwitchCurrentPolicy(policy, {});
 if (!result.ok) {
   // 超时、传输失败或回复解析失败

@@ -14,7 +14,7 @@ python3 examples/python/switch_policy.py backflip --client-config "$CLIENT"
 
 Python 接口名是 `switch_current_policy`：
 
-```python
+```python showLineNumbers
 from latentos_sdk import Client, CommandOptions
 
 client = Client(client_config_path=client_config)

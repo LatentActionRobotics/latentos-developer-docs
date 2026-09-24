@@ -17,7 +17,7 @@ python3 examples/python/switch_group.py locomotion policy1 --client-config "$CLI
 python3 examples/python/switch_group.py motion_tracking backflip --client-config "$CLIENT"
 ```
 
-```python
+```python showLineNumbers
 from latentos_sdk import Client, CommandOptions
 
 client = Client(client_config_path=client_config)
@@ -41,7 +41,7 @@ finally:
 ./build/examples/switch_group motion_tracking backflip --client-config "$CLIENT"
 ```
 
-```cpp
+```cpp showLineNumbers
 #include <latentos/sdk/core/session.h>
 #include <latentos/sdk/motion/motion_client.h>
 

@@ -15,7 +15,7 @@ target_link_libraries(my_app PRIVATE latentos::sdk_nav)
 
 类：`latentos::sdk::nav::NavClient`
 
-```cpp
+```cpp showLineNumbers
 explicit NavClient(core::Session& session);
 
 void AdvertisePointCloudStream(std::string ip,

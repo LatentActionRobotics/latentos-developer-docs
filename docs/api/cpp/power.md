@@ -15,7 +15,7 @@ target_link_libraries(my_app PRIVATE latentos::sdk_power)
 
 类：`latentos::sdk::power::PowerClient`
 
-```cpp
+```cpp showLineNumbers
 explicit PowerClient(core::Session& session);
 
 void SubscribeSummary(SummaryCallback callback);

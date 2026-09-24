@@ -72,7 +72,7 @@ nc -vz -w 2 "$ROBOT_IP" 7447
 
 将下面代码保存为 `camera_demo.cc`。程序按顺序发送请求，每次等待相同 `camera_id` 和 `seq` 的结果；先建立状态订阅，再发送命令。示例适用于由本程序独占控制的相机，会修改亮度和流参数，并在结束时关闭流；这些设置不会自动恢复。
 
-```cpp
+```cpp showLineNumbers
 #include <latentos/sdk/camera/camera_client.h>
 #include <latentos/sdk/core/session.h>
 

@@ -15,7 +15,7 @@ target_link_libraries(my_app PRIVATE latentos::sdk_camera)
 
 类：`latentos::sdk::camera::CameraClient`
 
-```cpp
+```cpp showLineNumbers
 explicit CameraClient(core::Session& session);
 
 CameraCapabilities QueryCapabilities(std::string camera_id = "",
@@ -86,7 +86,7 @@ std::optional<CameraStreamParamsStatus> GetLatestStreamParamsStatus() const;
 
 应用必须用 `camera_id` 和 `seq` 关联请求与结果，同时检查 `ok` 和对应 `result_code`。
 
-```cpp
+```cpp showLineNumbers
 client.SubscribeStreamStatus([](const latentos::sdk::CameraStreamStatus& status) {
   // 使用 status.seq 与发送接口返回值匹配。
 });
@@ -97,7 +97,7 @@ const auto seq = client.SendStreamCommand(
 
 公开工具函数：
 
-```cpp
+```cpp showLineNumbers
 const char* ToString(CameraFeature value);
 // 其他 Camera 枚举也提供 ToString 重载。
 bool CameraHasControlFlag(std::int32_t flags, CameraControlFlag flag);

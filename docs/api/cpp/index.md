@@ -24,7 +24,7 @@ find_package(latentos_sdk CONFIG REQUIRED)
 target_link_libraries(my_app PRIVATE latentos::sdk)
 ```
 
-```cpp
+```cpp showLineNumbers
 #include <latentos/sdk/client.h>
 
 latentos::sdk::SdkOptions options;
@@ -47,7 +47,7 @@ latentos::sdk::Client client(std::move(options));
 
 模块 Client 适用于完整交付和裁剪交付。一个 `core::Session` 可共享给多个模块：
 
-```cpp
+```cpp showLineNumbers
 latentos::sdk::core::Session session(std::move(options));
 latentos::sdk::motion::MotionClient motion(session);
 latentos::sdk::power::PowerClient power(session);

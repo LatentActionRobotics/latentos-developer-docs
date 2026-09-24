@@ -15,7 +15,7 @@ target_link_libraries(my_app PRIVATE latentos::sdk_low_level)
 
 类：`latentos::sdk::low_level::LowLevelClient`
 
-```cpp
+```cpp showLineNumbers
 explicit LowLevelClient(core::Session& session);
 
 void SubscribeJointState(JointStateCallback callback);
