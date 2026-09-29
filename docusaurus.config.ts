@@ -65,6 +65,19 @@ const config: Config = {
     ],
   ],
 
+  // MaxKB floating support widget: HTTP IP only works on local `npm start`.
+  // Skip in production builds until MaxKB has HTTPS + domain.
+  scripts:
+    process.env.NODE_ENV === 'development'
+      ? [
+          {
+            src: 'http://116.62.157.121:5000/support/widget.js',
+            defer: true,
+            'data-label': '在线客服',
+          },
+        ]
+      : [],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
