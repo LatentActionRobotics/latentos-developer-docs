@@ -78,6 +78,23 @@ const config: Config = {
     ],
   ],
 
+  // Baidu Analytics (hm.js)
+  headTags: [
+    {
+      tagName: 'script',
+      attributes: {},
+      innerHTML: `
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?aeca4020d4685706b255954ef7859077";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+`.trim(),
+    },
+  ],
+
   // MaxKB floating support widget (https://service.latent-action.com)
   scripts: [
     {
