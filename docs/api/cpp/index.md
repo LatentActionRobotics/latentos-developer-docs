@@ -4,25 +4,27 @@ sidebar_label: 总览
 
 # C++ API Reference
 
-本参考对应 `latentos_sdk_cpp` **1.1.0**，只描述应用可使用的公开 C++ API。规范命名为：
+本参考对应 `latentos_sdk_cpp` **1.2.0**，只描述应用可使用的公开 C++ API。规范命名为：
 
 - 头文件：`<latentos/sdk/...>`
 - 命名空间：`latentos::sdk`
 - CMake package：`latentos_sdk`、`latentos_sdk_<module>`
 - CMake target：`latentos::sdk`、`latentos::sdk_<module>`
 
-快速了解安装布局和调用方式，请先阅读 [C++ SDK 指南](../../sdk/cpp.md)。
+快速了解安装布局和调用方式，请先阅读 [C++ SDK 指南](../../sdk/cpp.md)。各模块页按同一结构组织：模块说明 → 头文件 / CMake → 方法表 → 数据类型 → 调用示例。
 
 ## 选择入口
 
 ### 统一 Client
 
-完整模块交付提供 `latentos::sdk::Client`，适合希望用一个对象访问全部能力的应用：
+完整模块交付提供 `latentos::sdk::Client`，适合希望用一个对象访问全部能力的应用。CMake 中链接聚合包：
 
 ```cmake
 find_package(latentos_sdk CONFIG REQUIRED)
 target_link_libraries(my_app PRIVATE latentos::sdk)
 ```
+
+构造时传入 `SdkOptions`（至少设置 Echo client YAML）：
 
 ```cpp showLineNumbers
 #include <latentos/sdk/client.h>
@@ -45,7 +47,7 @@ latentos::sdk::Client client(std::move(options));
 
 ### 模块 Client
 
-模块 Client 适用于完整交付和裁剪交付。一个 `core::Session` 可共享给多个模块：
+模块 Client 可按已安装模块单独使用。一个 `core::Session` 可共享给多个模块：
 
 ```cpp showLineNumbers
 latentos::sdk::core::Session session(std::move(options));
@@ -86,4 +88,4 @@ latentos::sdk::power::PowerClient power(session);
 
 ## 兼容说明
 
-1.1 暂时保留 1.0.x 的旧名称供已有源码重新编译。API Reference 只展示规范名称；新工程不要继续使用 `high_level` 名称。旧二进制程序不保证可直接替换为 1.1 动态库。
+自 1.1 起，规范名为 `latentos::sdk` / `<latentos/sdk/...>`；仍保留 1.0.x 的 `high_level` 旧名称供已有源码重新编译。API Reference 只展示规范名称，新工程不要继续使用 `high_level`。旧二进制程序不保证可直接替换为新版动态库。

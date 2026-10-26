@@ -1,6 +1,6 @@
 # 在 C++ 工程中使用
 
-C++ SDK 按模块提供 CMake package。示例采用一个 `core::Session` 加多个模块 Client：运动使用 `motion::MotionClient`，电源使用 `power::PowerClient`。这种写法同时适用于完整交付和模块裁剪交付。
+C++ SDK 按模块提供 CMake package。示例采用一个 `core::Session` 加多个模块 Client：运动使用 `motion::MotionClient`，电源使用 `power::PowerClient`。只要安装包中包含对应模块，即可按此方式集成。
 
 模块能力、安装布局和完整 API 索引见 [C++ SDK 指南](../sdk/cpp.md)。
 
@@ -97,7 +97,7 @@ if (battery && battery->power_state ==
 
 电源侧常用 `SubscribeBattery` / `GetLatestBattery`；返回的 `BatteryStatus.power_state` 可判断整机处于充电、放电、未充电、已充满或未知状态。
 
-完整模块交付也提供统一的 `latentos::sdk::Client`，可通过 `find_package(latentos_sdk CONFIG REQUIRED)` 和 `latentos::sdk` 使用。需要兼容模块裁剪或希望依赖更清晰时，推荐沿用本文的模块 Client 写法。
+部分安装包还提供统一的 `latentos::sdk::Client`，可通过 `find_package(latentos_sdk CONFIG REQUIRED)` 和 `latentos::sdk` 使用。若安装包未提供聚合 target，或希望依赖更清晰，推荐沿用本文的模块 Client 写法。
 
 ## 命令返回值
 

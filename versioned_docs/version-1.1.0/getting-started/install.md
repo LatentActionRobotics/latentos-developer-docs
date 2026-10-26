@@ -31,7 +31,7 @@ sudo ./activate.sh latentos-sdk_python-<ver>-<arch>.tar.gz
 - 只用 C++ 或只用 Python 时，装 Runtime + 对应那一个 SDK 即可
 - Runtime 与 SDK 应采用交付说明中验证过的版本组合；它们的版本号不要求相同
 
-若交付物是带 `install.sh` 的 cpp / python 包，按其说明安装；内部仍会落到 `/data/latentos/...`。
+若交付物是带 `install.sh` 的 cpp / python 包，按其说明安装；默认安装路径为 `/data/latentos/...`。
 
 ## 环境变量
 

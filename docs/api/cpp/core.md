@@ -4,25 +4,31 @@ sidebar_label: Core
 
 # Core API
 
-头文件：
+`core` 是所有业务模块的地基，提供连接配置与共享会话：
+
+- **`SdkOptions`**：Echo client 配置路径、实例标识与重连间隔。
+- **`core::Session`**：持有连接配置，供 Motion、Telemetry、Power 等模块 Client 共享。
+
+业务应用通常不单独链接 Core，而是链接具体模块 target（如 `latentos::sdk_motion`），由它们自动引入 Core。只有在自行组合多个模块 Client、或调试 Session 生命周期时，才需要直接依赖本模块。
+
+应用侧包含配置与 Session 头文件：
 
 ```cpp
 #include <latentos/sdk/core/options.h>
 #include <latentos/sdk/core/session.h>
 ```
 
-CMake：
+若确实需要单独链接 Core，在 CMake 中查找并链接对应模块包。安装前缀需已加入 `CMAKE_PREFIX_PATH`（常见为 `/data/latentos/sdk_cpp`）：
 
 ```cmake
 find_package(latentos_sdk_core CONFIG REQUIRED)
 target_link_libraries(my_app PRIVATE latentos::sdk_core)
 ```
 
-业务应用通常不单独链接 Core，而是链接 Motion、Power 等模块 target，由它们自动引入 Core。
-
 ## SdkOptions
 
-命名空间：`latentos::sdk`
+命名空间：`latentos::sdk`  
+头文件：`<latentos/sdk/core/options.h>`
 
 连接级配置，由 `core::Session` 或统一 `Client` 持有。
 
@@ -35,14 +41,31 @@ target_link_libraries(my_app PRIVATE latentos::sdk_core)
 
 ## core::Session
 
-```cpp
+头文件：`<latentos/sdk/core/session.h>`  
+类：`latentos::sdk::core::Session`
+
+```cpp showLineNumbers
 explicit Session(SdkOptions options);
 const SdkOptions& options() const;
 ```
 
-Session 表示一组共享连接配置。模块 Client 保存对 Session 的引用，因此 Session 必须比所有使用它的模块 Client 更晚销毁。
+| 方法 | 说明 |
+| --- | --- |
+| `Session(options)` | 用连接配置构造会话；配置文件无效时可能抛出 `std::exception` |
+| `options()` | 返回构造时使用的只读配置 |
+
+Session 表示一组共享连接配置。模块 Client 保存对 Session 的引用，因此 **Session 必须比所有使用它的模块 Client 更晚销毁**。一个 Session 可同时供给多个模块 Client。
+
+### 创建 Session
 
 ```cpp showLineNumbers
+#include <latentos/sdk/core/options.h>
+#include <latentos/sdk/core/session.h>
+#include <latentos/sdk/motion/motion_client.h>
+#include <latentos/sdk/telemetry/telemetry_client.h>
+
+#include <utility>
+
 namespace sdk = latentos::sdk;
 
 sdk::SdkOptions options;
@@ -50,6 +73,14 @@ options.client_config_path = "config/echo/mode/client.yaml";
 options.retry_interval_ms = 2000;
 
 sdk::core::Session session(std::move(options));
+sdk::motion::MotionClient motion(session);
+sdk::telemetry::TelemetryClient telemetry(session);
 ```
 
-配置文件不存在、不可读或内容无效时，构造过程可能抛出 `std::exception`。
+配置文件不存在、不可读或内容无效时，构造过程可能抛出 `std::exception`。连接端点与 YAML 写法见 [连接机器人](../../getting-started/connect.md)。
+
+## 相关文档
+
+- [C++ SDK 指南](../../sdk/cpp.md)
+- [C++ API 总览](./index.md)
+- [连接机器人](../../getting-started/connect.md)

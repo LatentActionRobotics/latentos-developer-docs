@@ -46,14 +46,14 @@ cmake --build build -j
 
 ## 模块划分
 
-`core` 是所有模块的公共基础。其余模块可按交付需求裁剪，因此应用应只查找和链接实际使用的模块。
+`core` 是所有模块的公共基础。其余模块是否可用取决于当前安装包，应用应只查找和链接实际使用的模块。
 
 | 模块 | CMake package / target | 主要能力 |
 | --- | --- | --- |
 | `core` | `latentos_sdk_core` / `latentos::sdk_core` | `SdkOptions`、连接会话及公共订阅能力 |
 | `motion` | `latentos_sdk_motion` / `latentos::sdk_motion` | Group/Policy 切换、运动状态查询、SE(2) 速度 |
 | `telemetry` | `latentos_sdk_telemetry` / `latentos::sdk_telemetry` | IMU、GNSS 状态 |
-| `low_level` | `latentos_sdk_low_level` / `latentos::sdk_low_level` | 关节状态、直接关节命令 |
+| `low_level` | — | **本版本不可用**（见 [Low Level API](../api/cpp/low-level.md)） |
 | `power` | `latentos_sdk_power` / `latentos::sdk_power` | 电池、PMU 状态/事件及电源控制 |
 | `camera` | `latentos_sdk_camera` / `latentos::sdk_camera` | 相机能力、控制、推流及参数设置 |
 | `nav` | `latentos_sdk_nav` / `latentos::sdk_nav` | 点云流端点广播 |
@@ -107,7 +107,7 @@ target_link_libraries(my_app PRIVATE latentos::sdk)
 latentos::sdk::Client client(std::move(options));
 ```
 
-统一 `Client` 使用更简洁；模块 Client 同时适用于完整交付和裁剪交付，也是配套示例采用的方式。不要假定每个安装包都包含统一 `Client`。
+统一 `Client` 使用更简洁；模块 Client 不依赖聚合包是否齐全，也是配套示例采用的方式。不要假定每个安装包都包含统一 `Client`。
 
 ## API 调用模型
 
@@ -185,16 +185,7 @@ Group、Policy 规则见 [Group 与 Policy](../concepts/groups-and-policies.md)�
 
 ### Low Level
 
-类：`latentos::sdk::low_level::LowLevelClient`
-
-| API | 说明 |
-| --- | --- |
-| `SubscribeJointState(callback)` / `GetLatestJointState()` | 订阅/读取关节状态 |
-| `SendJointCommand(command)` | 发送 MIT 风格的直接关节命令 |
-
-:::warning
-`SendJointCommand()` 不经过运动控制仲裁，错误的目标值或控制模式可能导致机器狗突然运动或摔倒。仅在吊架、急停和直接关节控制模式均已确认时使用。
-:::
+**SDK 1.1.0 不提供本模块。** 说明见 [Low Level API](../api/cpp/low-level.md)。
 
 ### Power
 

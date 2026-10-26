@@ -63,7 +63,7 @@ python3 -c 'from latentos_sdk import Client'
 | 模块 | 示例 | 说明 |
 | --- | --- | --- |
 | `telemetry` | `get_imu`、`subscribe_imu`、`get_gnss`、`subscribe_gnss` | IMU / GNSS |
-| `low_level` | `get_joint_state`、`subscribe_joint_state`、`send_joint_command` | 关节状态；`send_joint_command` 是开环 MIT 命令，可能让机器摔倒 |
+| `low_level` | — | 本版本不可用，见 [Low Level API](../api/cpp/low-level.md) |
 | `power` | `get_power_*` / `subscribe_power_*`、`power_control` | PMU 只读与控制；`power_control` 会开关电源/灯/风扇 |
 | `camera` | `camera_capabilities`、`camera_set_control`、`camera_set_stream`、`camera_set_stream_params` | 见 [相机控制](./camera.md) |
 | `nav` | `advertise_pointcloud` | 上报点云流地址 |

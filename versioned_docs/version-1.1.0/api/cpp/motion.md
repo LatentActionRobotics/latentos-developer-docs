@@ -4,16 +4,29 @@ sidebar_label: Motion
 
 # Motion API
 
+`motion` 模块面向高层运动控制：
+
+- 切换 Group / Policy，查询运动状态。
+- 启停速度平滑、遥控速度输入。
+- 按控制周期发送 SE(2) 速度（`x`、`y` 为 m/s，`yaw` 为 rad/s）。
+
+操作真机前请确认当前 Group、控制权、速度范围和现场安全条件。
+
+应用侧至少包含 Session 与 Motion Client 头文件；结果与枚举类型头文件已由后者间接引入，需要单独使用时可再显式包含 `result.h` / `codes.h`：
+
 ```cpp
+#include <latentos/sdk/core/session.h>
 #include <latentos/sdk/motion/motion_client.h>
 ```
+
+CMake 中查找并链接对应模块包。安装前缀需已加入 `CMAKE_PREFIX_PATH`（常见为 `/data/latentos/sdk_cpp`）：
 
 ```cmake
 find_package(latentos_sdk_motion CONFIG REQUIRED)
 target_link_libraries(my_app PRIVATE latentos::sdk_motion)
 ```
 
-类：`latentos::sdk::motion::MotionClient`
+入口类为 `latentos::sdk::motion::MotionClient`，构造时传入已配置好的 `core::Session`。公开方法如下：
 
 ```cpp showLineNumbers
 explicit MotionClient(core::Session& session);
@@ -38,7 +51,7 @@ std::string VelocityCandidateTopic() const;
 
 | 方法 | 说明 |
 | --- | --- |
-| `SwitchGroup` | 切换 Group；需要 Policy 的 Group 必须同时传入 |
+| `SwitchGroup` | 切换 Group；需要 Policy 的 Group 必须同时传入；无 Policy 的 Group（如 `stand`、`joint_test`）传空字符串 |
 | `SwitchCurrentPolicy` | 在当前 Group 内切换 Policy |
 | `QueryMotionControlState` | 查询当前/目标 Group 与是否正在切换 |
 | `QueryPolicyOperation` | 使用 `operation_id` 查询异步 Policy 操作 |
@@ -47,7 +60,7 @@ std::string VelocityCandidateTopic() const;
 | `SendVelocity` | 发送 SE(2) 速度：`x`、`y` 为 m/s，`yaw` 为 rad/s |
 | `VelocityCandidateTopic` | 返回速度 Publisher 的只读 Topic 元数据，不能用于修改发送目标 |
 
-`SendVelocity()` 应按控制周期持续调用。操作机器人前请先确认 Group、控制权、速度范围和现场安全条件。
+`SendVelocity()` 应按控制周期持续调用。不要只判断 `CommandResult.ok`：命令成功通常至少要求 `ok && accepted`；需要同步完成的业务还应检查 `completed` 和 `operation_state`。
 
 ## CommandOptions
 
@@ -82,8 +95,6 @@ std::string VelocityCandidateTopic() const;
 
 `Unknown`、`Accepted`、`InProgress`、`Succeeded`、`Failed`。
 
-不要只判断 `ok`：命令成功通常至少要求 `ok && accepted`；需要同步完成的业务还应检查 `completed` 和 `operation_state`。
-
 ## QueryOptions 与 MotionControlState
 
 `QueryOptions`：
@@ -105,4 +116,76 @@ std::string VelocityCandidateTopic() const;
 
 `MotionQueryResultCode` 包含 `Unknown`、`Ok`、`InvalidArgument`、`DecodeFailed`、`SchemaVersionUnsupported`、`InternalError`。
 
-完整使用流程见 [Group 与 Policy](../../concepts/groups-and-policies.md) 和 [运动示例](../../examples/switch-group.md)。
+## 调用示例
+
+### 切换 Group
+
+无 Policy 的 Group 传空字符串；需要 Policy 的 Group（如 `locomotion`）必须同时传入：
+
+```cpp showLineNumbers
+#include <latentos/sdk/core/session.h>
+#include <latentos/sdk/motion/motion_client.h>
+
+#include <iostream>
+#include <utility>
+
+latentos::sdk::SdkOptions options;
+options.client_config_path = "config/echo/mode/client.yaml";
+latentos::sdk::core::Session session(std::move(options));
+latentos::sdk::motion::MotionClient motion(session);
+
+latentos::sdk::CommandOptions command_options;
+command_options.timeout_ms = 1000;
+
+auto stand = motion.SwitchGroup("stand", "", command_options);
+if (!stand.ok || !stand.accepted) {
+  std::cerr << stand.message << '\n';
+  return;
+}
+
+auto loco = motion.SwitchGroup("locomotion", "default", command_options);
+std::cout << "ok=" << loco.ok << " accepted=" << loco.accepted
+          << " code=" << latentos::sdk::ToString(loco.result_code)
+          << " message=" << loco.message << '\n';
+```
+
+### 查询运动状态
+
+```cpp showLineNumbers
+latentos::sdk::QueryOptions query_options;
+query_options.timeout_ms = 1000;
+auto state = motion.QueryMotionControlState(query_options);
+if (state.ok) {
+  std::cout << "current_group=" << state.current_group
+            << " target_group=" << state.target_group
+            << " is_transitioning=" << state.is_transitioning << '\n';
+}
+```
+
+### 发送速度
+
+先关闭可能冲突的遥控输入与平滑（按现场需要），再按周期发送：
+
+```cpp showLineNumbers
+if (!motion.SetRemoteVelocityControl(false, {}).accepted) {
+  return;
+}
+if (!motion.SetVelocitySmoothing(false, {}).accepted) {
+  return;
+}
+
+for (int i = 0; i < 10; ++i) {
+  motion.SendVelocity(/*x=*/0.2, /*y=*/0.0, /*yaw=*/0.0);
+  std::this_thread::sleep_for(std::chrono::milliseconds(50));
+}
+```
+
+完整使用流程见 [Group 与 Policy](../../concepts/groups-and-policies.md) 与示例 `switch_group`、`switch_policy`、`query_motion_state`、`send_velocity`。
+
+## 相关文档
+
+- [C++ SDK 指南](../../sdk/cpp.md)
+- [Group 与 Policy](../../concepts/groups-and-policies.md)
+- [切换 Group](../../examples/switch-group.md)
+- [发送速度](../../examples/send-velocity.md)
+- [Low Level API](./low-level.md)（直接关节模式 `joint_test`）

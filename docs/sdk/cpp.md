@@ -46,7 +46,7 @@ cmake --build build -j
 
 ## 模块划分
 
-`core` 是所有模块的公共基础。其余模块可按交付需求裁剪，因此应用应只查找和链接实际使用的模块。
+`core` 是所有模块的公共基础。其余模块是否可用取决于当前安装包，应用应只查找和链接实际使用的模块。
 
 | 模块 | CMake package / target | 主要能力 |
 | --- | --- | --- |
@@ -107,7 +107,7 @@ target_link_libraries(my_app PRIVATE latentos::sdk)
 latentos::sdk::Client client(std::move(options));
 ```
 
-统一 `Client` 使用更简洁；模块 Client 同时适用于完整交付和裁剪交付，也是配套示例采用的方式。不要假定每个安装包都包含统一 `Client`。
+统一 `Client` 使用更简洁；模块 Client 不依赖聚合包是否齐全，也是配套示例采用的方式。不要假定每个安装包都包含统一 `Client`。
 
 ## API 调用模型
 
@@ -189,8 +189,10 @@ Group、Policy 规则见 [Group 与 Policy](../concepts/groups-and-policies.md)�
 
 | API | 说明 |
 | --- | --- |
-| `SubscribeJointState(callback)` / `GetLatestJointState()` | 订阅/读取关节状态 |
+| `SubscribeJointState(callback)` / `UnsubscribeJointState()` / `GetLatestJointState()` | 订阅/退订/读取关节状态（`position` 为关节角，单位 rad） |
 | `SendJointCommand(command)` | 发送 MIT 风格的直接关节命令 |
+
+只读关节状态可直接订阅。字段说明与调用示例见 [Low Level API](../api/cpp/low-level.md)。
 
 :::warning
 `SendJointCommand()` 不经过运动控制仲裁，错误的目标值或控制模式可能导致机器狗突然运动或摔倒。仅在吊架、急停和直接关节控制模式均已确认时使用。
@@ -248,7 +250,7 @@ if (auto battery = power.GetLatestBattery();
 | `SetControl()` | 设置曝光、增益等受支持控件，返回 `seq` |
 | `SendStreamCommand()` | 启动、停止或重启推流，返回 `seq` |
 | `SetStreamParams()` | 设置分辨率、帧率和码率，返回 `seq` |
-| `Subscribe*Status(callback)` / `GetLatest*Status()` | 订阅/读取上述异步操作的状态 |
+| `Subscribe*Status(callback)` / `Unsubscribe*Status()` / `GetLatest*Status()` | 订阅/退订/读取上述异步操作的状态 |
 
 调用前先通过 `QueryCapabilities()` 判断相机与功能是否可用。设置接口成功发送不等于相机已经完成操作，应继续核对对应状态中的 `seq` 和结果码。
 

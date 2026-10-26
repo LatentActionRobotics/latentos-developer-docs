@@ -11,18 +11,20 @@ sidebar_label: 总览
 - CMake package：`latentos_sdk`、`latentos_sdk_<module>`
 - CMake target：`latentos::sdk`、`latentos::sdk_<module>`
 
-快速了解安装布局和调用方式，请先阅读 [C++ SDK 指南](../../sdk/cpp.md)。
+快速了解安装布局和调用方式，请先阅读 [C++ SDK 指南](../../sdk/cpp.md)。各模块页按同一结构组织：模块说明 → 头文件 / CMake → 方法表 → 数据类型 → 调用示例。
 
 ## 选择入口
 
 ### 统一 Client
 
-完整模块交付提供 `latentos::sdk::Client`，适合希望用一个对象访问全部能力的应用：
+完整模块交付提供 `latentos::sdk::Client`，适合希望用一个对象访问全部能力的应用。CMake 中链接聚合包：
 
 ```cmake
 find_package(latentos_sdk CONFIG REQUIRED)
 target_link_libraries(my_app PRIVATE latentos::sdk)
 ```
+
+构造时传入 `SdkOptions`（至少设置 Echo client YAML）：
 
 ```cpp showLineNumbers
 #include <latentos/sdk/client.h>
@@ -45,7 +47,7 @@ latentos::sdk::Client client(std::move(options));
 
 ### 模块 Client
 
-模块 Client 适用于完整交付和裁剪交付。一个 `core::Session` 可共享给多个模块：
+模块 Client 可按已安装模块单独使用。一个 `core::Session` 可共享给多个模块：
 
 ```cpp showLineNumbers
 latentos::sdk::core::Session session(std::move(options));
@@ -58,7 +60,7 @@ latentos::sdk::power::PowerClient power(session);
 | Core | `core::Session` | [Core](./core.md) |
 | Motion | `motion::MotionClient` | [Motion](./motion.md) |
 | Telemetry | `telemetry::TelemetryClient` | [Telemetry](./telemetry.md) |
-| Low Level | `low_level::LowLevelClient` | [Low Level](./low-level.md) |
+| Low Level | — | [Low Level](./low-level.md)（本版本不可用） |
 | Power | `power::PowerClient` | [Power](./power.md) |
 | Camera | `camera::CameraClient` | [Camera](./camera.md) |
 | Nav | `nav::NavClient` | [Nav](./nav.md) |
@@ -79,7 +81,7 @@ latentos::sdk::power::PowerClient power(session);
 | Core | `<latentos/sdk/core/options.h>`、`<latentos/sdk/core/session.h>` |
 | Motion | `<latentos/sdk/motion/motion_client.h>`、`result.h`、`codes.h` |
 | Telemetry | `<latentos/sdk/telemetry/telemetry_client.h>`、`imu.h`、`gnss.h` |
-| Low Level | `<latentos/sdk/low_level/low_level_client.h>`、`joint_state.h`、`joint_command.h` |
+| Low Level | 本版本不可用，见 [Low Level](./low-level.md) |
 | Power | `<latentos/sdk/power/power_client.h>` 及同目录数据类型头文件 |
 | Camera | `<latentos/sdk/camera/camera_client.h>` 及同目录数据类型头文件 |
 | Nav | `<latentos/sdk/nav/nav_client.h>` |
