@@ -8,7 +8,7 @@ sidebar_label: DepthAI / OAK-D 深度相机 SDK 安装
 
 DepthAI 为上游开源 SDK，功能与兼容性以其官方文档为准；本站文档侧重已验证配置与预编译包使用说明。
 
-经 LatentOS SDK 控制机器狗上相机时，请改看 [相机控制](/examples/camera)。
+经 LatentOS SDK 控制机器狗上相机时，请改看 [相机控制](../examples/camera.md)。
 
 ## **重要说明与责任边界**
 

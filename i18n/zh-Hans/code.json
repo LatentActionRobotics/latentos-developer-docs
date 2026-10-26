@@ -1,0 +1,14 @@
+{
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "这是 {versionLabel} 的未发布文档，内容可能还会变化。",
+    "description": "The label used to tell the user that he's browsing an unreleased doc version"
+  },
+  "theme.docs.versions.latestVersionSuggestionLabel": {
+    "message": "已发布的文档请看{latestVersionLink}（{versionLabel}）。",
+    "description": "The label used to tell the user to check the latest version"
+  },
+  "theme.docs.versions.latestVersionLinkLabel": {
+    "message": "最新版本",
+    "description": "The label used for the latest version suggestion link label"
+  }
+}

@@ -24,6 +24,8 @@ npm run build
 npm run serve   # 可选，预览 build/
 ```
 
+文档有版本。导航栏可在已发布的 1.1.0 和未发布的 1.2.0 之间切换，默认打开 1.1.0。发布流程见 [CONTRIBUTING.md](./CONTRIBUTING.md)。
+
 ## 贡献
 
 文档为 Markdown，主要改动在 `docs/`。写作约定、插图路径与构建检查见 [CONTRIBUTING.md](./CONTRIBUTING.md)。

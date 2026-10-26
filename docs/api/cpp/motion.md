@@ -105,4 +105,4 @@ std::string VelocityCandidateTopic() const;
 
 `MotionQueryResultCode` 包含 `Unknown`、`Ok`、`InvalidArgument`、`DecodeFailed`、`SchemaVersionUnsupported`、`InternalError`。
 
-完整使用流程见 [Group 与 Policy](/concepts/groups-and-policies) 和 [运动示例](/examples/switch-group)。
+完整使用流程见 [Group 与 Policy](../../concepts/groups-and-policies.md) 和 [运动示例](../../examples/switch-group.md)。

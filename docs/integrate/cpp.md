@@ -2,7 +2,7 @@
 
 C++ SDK 按模块提供 CMake package。示例采用一个 `core::Session` 加多个模块 Client：运动使用 `motion::MotionClient`，电源使用 `power::PowerClient`。这种写法同时适用于完整交付和模块裁剪交付。
 
-模块能力、安装布局和完整 API 索引见 [C++ SDK 指南](/sdk/cpp)。
+模块能力、安装布局和完整 API 索引见 [C++ SDK 指南](../sdk/cpp.md)。
 
 ## 最小工程
 
@@ -15,7 +15,7 @@ my_latentos_cpp_project/
     └── main.cc
 ```
 
-`client.yaml` 内容见 [连接机器人](/getting-started/connect)。`client_config_path` 必须指定；为空时构造会失败。正式程序建议捕获构造阶段的 `std::exception`。
+`client.yaml` 内容见 [连接机器人](../getting-started/connect.md)。`client_config_path` 必须指定；为空时构造会失败。正式程序建议捕获构造阶段的 `std::exception`。
 
 ## CMake
 

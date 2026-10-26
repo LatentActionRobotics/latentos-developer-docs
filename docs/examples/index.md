@@ -4,7 +4,7 @@ sidebar_label: 示例总览
 
 # 运行示例
 
-示例代码在 `latentos_sdk_example` 仓库中。先完成 [安装](/getting-started/install) 和 [连接配置](/getting-started/connect)，再在仓库根目录操作。
+示例代码在 `latentos_sdk_example` 仓库中。先完成 [安装](../getting-started/install.md) 和 [连接配置](../getting-started/connect.md)，再在仓库根目录操作。
 
 后文用 `$CLIENT` 表示：
 
@@ -17,12 +17,12 @@ CLIENT="$PWD/config/echo/mode/client.yaml"
 
 | 示例 | 功能 |
 | --- | --- |
-| [get_battery / subscribe_battery](/examples/battery) | 获取或订阅电量、电压、电流及充放电状态 |
-| [switch_group](/examples/switch-group) | 切换运动 group |
-| [query_motion_state](/examples/query-motion-state) | 查询当前运动控制状态（current/target group） |
-| [switch_policy](/examples/switch-policy) | 在当前 group 内切换 policy |
-| [send_velocity](/examples/send-velocity) | 发送 SE2 速度 |
-| [camera_*](/examples/camera) | 查询相机能力、热控件、开/停推流与流参数（C++） |
+| [get_battery / subscribe_battery](./battery.md) | 获取或订阅电量、电压、电流及充放电状态 |
+| [switch_group](./switch-group.md) | 切换运动 group |
+| [query_motion_state](./query-motion-state.md) | 查询当前运动控制状态（current/target group） |
+| [switch_policy](./switch-policy.md) | 在当前 group 内切换 policy |
+| [send_velocity](./send-velocity.md) | 发送 SE2 速度 |
+| [camera_*](./camera.md) | 查询相机能力、热控件、开/停推流与流参数（C++） |
 
 前五项 C++ 与 Python 同名示例的参数一致（`--client-config` 可选）。只读数据都成对提供 `get_*`（一次性）与 `subscribe_*`（持续）。相机示例目前仅有 C++。
 
@@ -65,7 +65,7 @@ python3 -c 'from latentos_sdk import Client'
 | `telemetry` | `get_imu`、`subscribe_imu`、`get_gnss`、`subscribe_gnss` | IMU / GNSS |
 | `low_level` | `get_joint_state`、`subscribe_joint_state`、`send_joint_command` | 关节状态；`send_joint_command` 是开环 MIT 命令，可能让机器摔倒 |
 | `power` | `get_power_*` / `subscribe_power_*`、`power_control` | PMU 只读与控制；`power_control` 会开关电源/灯/风扇 |
-| `camera` | `camera_capabilities`、`camera_set_control`、`camera_set_stream`、`camera_set_stream_params` | 见 [相机控制](/examples/camera) |
+| `camera` | `camera_capabilities`、`camera_set_control`、`camera_set_stream`、`camera_set_stream_params` | 见 [相机控制](./camera.md) |
 | `nav` | `advertise_pointcloud` | 上报点云流地址 |
 
 典型上电后发速度：

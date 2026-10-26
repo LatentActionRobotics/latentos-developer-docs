@@ -57,6 +57,6 @@ finally:
 | `subscribe_battery(callback=None)` | 订阅电池；可传入回调 |
 | `get_latest_battery()` | 读取本地缓存的最新电池状态，包括 `power_state` |
 
-命令类接口返回 `CommandResult`。至少同时检查 `ok` 和 `accepted`，不要只看 `ok`。字段含义见 [C++ 工程集成](/integrate/cpp#命令返回值)。
+命令类接口返回 `CommandResult`。至少同时检查 `ok` 和 `accepted`，不要只看 `ok`。字段含义见 [C++ 工程集成](./cpp.md#命令返回值)。
 
 SDK 1.1 仍提供 `latentos_high_level_sdk` 作为 `latentos_sdk` 的兼容 re-export，供 1.0.x 项目迁移。新代码统一从 `latentos_sdk` 导入。

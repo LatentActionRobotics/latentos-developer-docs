@@ -43,6 +43,19 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           editUrl:
             'https://github.com/LatentActionRobotics/latentos-developer-docs/tree/main/',
+          // versions.json 第一项是已发布的默认版本。docs/ 是下一版（未发布）。
+          versions: {
+            current: {
+              label: '1.2.0',
+              path: 'next',
+              banner: 'unreleased',
+              noIndex: true,
+            },
+            '1.1.0': {
+              label: '1.1.0',
+              banner: 'none',
+            },
+          },
         },
         blog: false,
         theme: {
@@ -92,6 +105,11 @@ const config: Config = {
           sidebarId: 'docsSidebar',
           position: 'left',
           label: '文档',
+        },
+        {
+          type: 'docsVersionDropdown',
+          position: 'right',
+          dropdownActiveClassDisabled: true,
         },
         {
           href: 'https://github.com/LatentActionRobotics/latentos-developer-docs',

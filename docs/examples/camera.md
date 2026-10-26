@@ -8,11 +8,11 @@ sidebar_label: 相机控制
 
 机器狗上往往有多个相机，用「方向 + index」区分，例如前后各一颗时为 `front_0`、`back_0`。下文以 `front_0` 为例。
 
-API 类型与结果码见 [Camera API](/api/cpp/camera)；模块总览见 [C++ SDK 指南](/sdk/cpp)。
+API 类型与结果码见 [Camera API](../api/cpp/camera.md)；模块总览见 [C++ SDK 指南](../sdk/cpp.md)。
 
-若在板端直接使用 OAK-D / DepthAI 等厂商 SDK，见 [选装设备](/peripherals)（与本页的 LatentOS 相机 API 不同）。
+若在板端直接使用 OAK-D / DepthAI 等厂商 SDK，见 [选装设备](../peripherals/index.md)（与本页的 LatentOS 相机 API 不同）。
 
-先完成 [安装](/getting-started/install) 和 [连接配置](/getting-started/connect)。后文 `$CLIENT` 含义见 [示例总览](/examples)。
+先完成 [安装](../getting-started/install.md) 和 [连接配置](../getting-started/connect.md)。后文 `$CLIENT` 含义见 [示例总览](./index.md)。
 
 ## 1. 配置连接和网络
 
@@ -261,7 +261,7 @@ cmake --build build -j
 
 ## 4. 官方示例命令
 
-具体环境安装请参见 `latentos_sdk_example` 的 README。编译方式见 [示例总览](/examples) 的 C++ 小节。
+具体环境安装请参见 `latentos_sdk_example` 的 README。编译方式见 [示例总览](./index.md) 的 C++ 小节。
 
 ### camera_capabilities
 

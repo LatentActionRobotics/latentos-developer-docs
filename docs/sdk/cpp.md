@@ -15,7 +15,7 @@ sidebar_label: C++ SDK 指南
 - 与开发机架构匹配的 C++ SDK 和 Runtime
 - 可访问目标机器狗的 Echo client YAML 配置
 
-安装和版本配套方法见 [安装 SDK](/getting-started/install)，网络配置见 [连接机器狗](/getting-started/connect)。
+安装和版本配套方法见 [安装 SDK](../getting-started/install.md)，网络配置见 [连接机器狗](../getting-started/connect.md)。
 
 ## 安装后的位置
 
@@ -172,7 +172,7 @@ if (battery && battery->ok && !battery->stale) {
 | `SendVelocity(x, y, yaw)` | 发送 SE(2) 速度，单位分别为 m/s、m/s、rad/s |
 | `VelocityCandidateTopic()` | 获取速度 Publisher 使用的只读 Topic 元数据 |
 
-Group、Policy 规则见 [Group 与 Policy](/concepts/groups-and-policies)。
+Group、Policy 规则见 [Group 与 Policy](../concepts/groups-and-policies.md)。
 
 ### Telemetry
 
@@ -252,7 +252,7 @@ if (auto battery = power.GetLatestBattery();
 
 调用前先通过 `QueryCapabilities()` 判断相机与功能是否可用。设置接口成功发送不等于相机已经完成操作，应继续核对对应状态中的 `seq` 和结果码。
 
-完整使用流程（网络配置、能力表、开流演示、官方示例命令）见 [相机控制](/examples/camera)。类型与结果码见 [Camera API](/api/cpp/camera)。
+完整使用流程（网络配置、能力表、开流演示、官方示例命令）见 [相机控制](../examples/camera.md)。类型与结果码见 [Camera API](../api/cpp/camera.md)。
 
 ### Nav
 
@@ -264,11 +264,11 @@ if (auto battery = power.GetLatestBattery();
 
 ## 下一步
 
-- [C++ API Reference](/api/cpp)：公开类、方法、数据类型和枚举索引
-- [在 C++ 工程中使用](/integrate/cpp)：完整的 CMake 与代码示例
-- [运行示例](/examples)：按模块验证安装和连接
-- [相机控制](/examples/camera)：查询能力、推流与热控件
-- [常见问题](/faq)：排查 CMake、动态库和连接问题
+- [C++ API Reference](../api/cpp/index.md)：公开类、方法、数据类型和枚举索引
+- [在 C++ 工程中使用](../integrate/cpp.md)：完整的 CMake 与代码示例
+- [运行示例](../examples/index.md)：按模块验证安装和连接
+- [相机控制](../examples/camera.md)：查询能力、推流与热控件
+- [常见问题](../faq.md)：排查 CMake、动态库和连接问题
 
 ## 1.0.x 名称兼容
 

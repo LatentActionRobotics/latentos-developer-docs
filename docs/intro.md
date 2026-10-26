@@ -10,14 +10,14 @@ LatentOS SDK 用来从开发机连上**已经在运行**的机器人或本机仿
 
 ## 阅读路径
 
-1. [P30 产品参数](/product/p30)（可选）
-2. [前置条件](/getting-started/prerequisites)
-3. [安装 SDK](/getting-started/install)
-4. [连接机器人](/getting-started/connect)
-5. [了解 C++ SDK](/sdk/cpp)
-6. [Group 与 Policy](/concepts/groups-and-policies)
-7. [运行示例](/examples)
-8. 接到自己的工程：[C++](/integrate/cpp) 或 [Python](/integrate/python)
+1. [P30 产品参数](./product/p30.md)（可选）
+2. [前置条件](./getting-started/prerequisites.md)
+3. [安装 SDK](./getting-started/install.md)
+4. [连接机器人](./getting-started/connect.md)
+5. [了解 C++ SDK](./sdk/cpp.md)
+6. [Group 与 Policy](./concepts/groups-and-policies.md)
+7. [运行示例](./examples/index.md)
+8. 接到自己的工程：[C++](./integrate/cpp.md) 或 [Python](./integrate/python.md)
 
 ## 两套语言的差异
 

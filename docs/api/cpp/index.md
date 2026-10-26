@@ -11,7 +11,7 @@ sidebar_label: 总览
 - CMake package：`latentos_sdk`、`latentos_sdk_<module>`
 - CMake target：`latentos::sdk`、`latentos::sdk_<module>`
 
-快速了解安装布局和调用方式，请先阅读 [C++ SDK 指南](/sdk/cpp)。
+快速了解安装布局和调用方式，请先阅读 [C++ SDK 指南](../../sdk/cpp.md)。
 
 ## 选择入口
 
@@ -55,13 +55,13 @@ latentos::sdk::power::PowerClient power(session);
 
 | 模块 | 类 | 参考 |
 | --- | --- | --- |
-| Core | `core::Session` | [Core](/api/cpp/core) |
-| Motion | `motion::MotionClient` | [Motion](/api/cpp/motion) |
-| Telemetry | `telemetry::TelemetryClient` | [Telemetry](/api/cpp/telemetry) |
-| Low Level | `low_level::LowLevelClient` | [Low Level](/api/cpp/low-level) |
-| Power | `power::PowerClient` | [Power](/api/cpp/power) |
-| Camera | `camera::CameraClient` | [Camera](/api/cpp/camera) |
-| Nav | `nav::NavClient` | [Nav](/api/cpp/nav) |
+| Core | `core::Session` | [Core](./core.md) |
+| Motion | `motion::MotionClient` | [Motion](./motion.md) |
+| Telemetry | `telemetry::TelemetryClient` | [Telemetry](./telemetry.md) |
+| Low Level | `low_level::LowLevelClient` | [Low Level](./low-level.md) |
+| Power | `power::PowerClient` | [Power](./power.md) |
+| Camera | `camera::CameraClient` | [Camera](./camera.md) |
+| Nav | `nav::NavClient` | [Nav](./nav.md) |
 
 ## 通用约定
 
