@@ -50,7 +50,7 @@ cmake --build build -j
 
 | 模块 | CMake package / target | 主要能力 |
 | --- | --- | --- |
-| `core` | `latentos_sdk_core` / `latentos::sdk_core` | `SdkOptions`、连接会话、[Robot Status](../api/cpp/robot-status.md)（开发中） |
+| `core` | `latentos_sdk_core` / `latentos::sdk_core` | `SdkOptions`、连接会话、[Safety Status](../api/cpp/robot-status.md) |
 | `motion` | `latentos_sdk_motion` / `latentos::sdk_motion` | Group/Policy 切换、运动状态查询、SE(2) 速度 |
 | `power` | `latentos_sdk_power` / `latentos::sdk_power` | 电池、PMU 状态/事件及电源控制 |
 | `telemetry` | `latentos_sdk_telemetry` / `latentos::sdk_telemetry` | IMU、GNSS 状态 |
