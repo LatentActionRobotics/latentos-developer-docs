@@ -25,10 +25,10 @@
         "api/cpp/index",
         "api/cpp/core",
         "api/cpp/motion",
-        "api/cpp/telemetry",
-        "api/cpp/low-level",
         "api/cpp/power",
+        "api/cpp/telemetry",
         "api/cpp/camera",
+        "api/cpp/low-level",
         "api/cpp/nav"
       ]
     },

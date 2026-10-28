@@ -34,7 +34,7 @@ options.client_config_path = "config/echo/mode/client.yaml";
 latentos::sdk::Client client(std::move(options));
 ```
 
-统一 Client 的方法与各模块 Client 能力一致。电源和相机方法为避免重名，使用更完整的方法名：
+整机状态通过 core 中独立的 `robot_status::RobotStatusClient` 使用，目前统一 Client 尚未提供对应便利方法；见 [Robot Status](./robot-status.md)。其他模块中，电源和相机方法为避免重名，使用更完整的方法名：
 
 | 能力 | 统一 Client 方法 | 模块 Client 方法 |
 | --- | --- | --- |
@@ -58,12 +58,13 @@ latentos::sdk::power::PowerClient power(session);
 | 模块 | 类 | 参考 |
 | --- | --- | --- |
 | Core | `core::Session` | [Core](./core.md) |
+| Robot Status | `robot_status::RobotStatusClient` | [Robot Status](./robot-status.md) |
 | Motion | `motion::MotionClient` | [Motion](./motion.md) |
-| Telemetry | `telemetry::TelemetryClient` | [Telemetry](./telemetry.md) |
-| Low Level | `low_level::LowLevelClient` | [Low Level](./low-level.md) |
 | Power | `power::PowerClient` | [Power](./power.md) |
+| Telemetry | `telemetry::TelemetryClient` | [Telemetry](./telemetry.md) |
 | Camera | `camera::CameraClient` | [Camera](./camera.md) |
-| Nav | `nav::NavClient` | [Nav](./nav.md) |
+| Low Level | `low_level::LowLevelClient` | [Low Level](./low-level.md) |
+| 导航与点云（Nav） | `nav::NavClient` | [导航与点云（Nav）](./nav.md) |
 
 ## 通用约定
 
@@ -79,12 +80,13 @@ latentos::sdk::power::PowerClient power(session);
 | --- | --- |
 | 统一 Client | `<latentos/sdk/client.h>` |
 | Core | `<latentos/sdk/core/options.h>`、`<latentos/sdk/core/session.h>` |
+| Robot Status | `<latentos/sdk/core/robot_status/robot_status_client.h>` 及同目录数据类型头文件 |
 | Motion | `<latentos/sdk/motion/motion_client.h>`、`result.h`、`codes.h` |
-| Telemetry | `<latentos/sdk/telemetry/telemetry_client.h>`、`imu.h`、`gnss.h` |
-| Low Level | `<latentos/sdk/low_level/low_level_client.h>`、`joint_state.h`、`joint_command.h` |
 | Power | `<latentos/sdk/power/power_client.h>` 及同目录数据类型头文件 |
+| Telemetry | `<latentos/sdk/telemetry/telemetry_client.h>`、`imu.h`、`gnss.h` |
 | Camera | `<latentos/sdk/camera/camera_client.h>` 及同目录数据类型头文件 |
-| Nav | `<latentos/sdk/nav/nav_client.h>` |
+| Low Level | `<latentos/sdk/low_level/low_level_client.h>`、`joint_state.h`、`joint_command.h` |
+| 导航与点云（Nav） | `<latentos/sdk/nav/nav_client.h>` |
 
 ## 兼容说明
 

@@ -1,5 +1,5 @@
 ---
-sidebar_label: Core
+sidebar_label: 连接与会话（Core）
 ---
 
 # Core API

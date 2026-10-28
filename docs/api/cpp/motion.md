@@ -1,5 +1,5 @@
 ---
-sidebar_label: Motion
+sidebar_label: 运动控制（Motion）
 ---
 
 # Motion API

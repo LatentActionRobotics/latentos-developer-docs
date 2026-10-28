@@ -1,5 +1,5 @@
 ---
-sidebar_label: Telemetry
+sidebar_label: 传感器遥测（Telemetry）
 ---
 
 # Telemetry API

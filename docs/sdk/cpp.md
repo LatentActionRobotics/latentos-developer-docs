@@ -50,13 +50,13 @@ cmake --build build -j
 
 | 模块 | CMake package / target | 主要能力 |
 | --- | --- | --- |
-| `core` | `latentos_sdk_core` / `latentos::sdk_core` | `SdkOptions`、连接会话及公共订阅能力 |
+| `core` | `latentos_sdk_core` / `latentos::sdk_core` | `SdkOptions`、连接会话、[Robot Status](../api/cpp/robot-status.md)（开发中） |
 | `motion` | `latentos_sdk_motion` / `latentos::sdk_motion` | Group/Policy 切换、运动状态查询、SE(2) 速度 |
-| `telemetry` | `latentos_sdk_telemetry` / `latentos::sdk_telemetry` | IMU、GNSS 状态 |
-| `low_level` | `latentos_sdk_low_level` / `latentos::sdk_low_level` | 关节状态、直接关节命令 |
 | `power` | `latentos_sdk_power` / `latentos::sdk_power` | 电池、PMU 状态/事件及电源控制 |
+| `telemetry` | `latentos_sdk_telemetry` / `latentos::sdk_telemetry` | IMU、GNSS 状态 |
 | `camera` | `latentos_sdk_camera` / `latentos::sdk_camera` | 相机能力、控制、推流及参数设置 |
-| `nav` | `latentos_sdk_nav` / `latentos::sdk_nav` | 点云流端点广播 |
+| `low_level` | `latentos_sdk_low_level` / `latentos::sdk_low_level` | 关节状态、直接关节命令 |
+| `nav` | `latentos_sdk_nav` / `latentos::sdk_nav` | 导航与点云（点云流端点广播） |
 
 例如，仅使用运动和电源模块：
 
@@ -256,7 +256,7 @@ if (auto battery = power.GetLatestBattery();
 
 完整使用流程（网络配置、能力表、开流演示、官方示例命令）见 [相机控制](../examples/camera.md)。类型与结果码见 [Camera API](../api/cpp/camera.md)。
 
-### Nav
+### 导航与点云（Nav）
 
 类：`latentos::sdk::nav::NavClient`
 

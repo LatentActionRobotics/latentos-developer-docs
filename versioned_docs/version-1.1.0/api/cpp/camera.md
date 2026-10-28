@@ -1,5 +1,5 @@
 ---
-sidebar_label: Camera
+sidebar_label: 相机控制（Camera）
 ---
 
 # Camera API

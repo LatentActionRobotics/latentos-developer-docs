@@ -1,5 +1,5 @@
 ---
-sidebar_label: Power
+sidebar_label: 电源与电池（Power）
 ---
 
 # Power API

@@ -59,11 +59,11 @@ latentos::sdk::power::PowerClient power(session);
 | --- | --- | --- |
 | Core | `core::Session` | [Core](./core.md) |
 | Motion | `motion::MotionClient` | [Motion](./motion.md) |
-| Telemetry | `telemetry::TelemetryClient` | [Telemetry](./telemetry.md) |
-| Low Level | — | [Low Level](./low-level.md)（本版本不可用） |
 | Power | `power::PowerClient` | [Power](./power.md) |
+| Telemetry | `telemetry::TelemetryClient` | [Telemetry](./telemetry.md) |
 | Camera | `camera::CameraClient` | [Camera](./camera.md) |
-| Nav | `nav::NavClient` | [Nav](./nav.md) |
+| Low Level | — | [Low Level](./low-level.md)（本版本不可用） |
+| 导航与点云（Nav） | `nav::NavClient` | [导航与点云（Nav）](./nav.md) |
 
 ## 通用约定
 
@@ -80,11 +80,11 @@ latentos::sdk::power::PowerClient power(session);
 | 统一 Client | `<latentos/sdk/client.h>` |
 | Core | `<latentos/sdk/core/options.h>`、`<latentos/sdk/core/session.h>` |
 | Motion | `<latentos/sdk/motion/motion_client.h>`、`result.h`、`codes.h` |
-| Telemetry | `<latentos/sdk/telemetry/telemetry_client.h>`、`imu.h`、`gnss.h` |
-| Low Level | 本版本不可用，见 [Low Level](./low-level.md) |
 | Power | `<latentos/sdk/power/power_client.h>` 及同目录数据类型头文件 |
+| Telemetry | `<latentos/sdk/telemetry/telemetry_client.h>`、`imu.h`、`gnss.h` |
 | Camera | `<latentos/sdk/camera/camera_client.h>` 及同目录数据类型头文件 |
-| Nav | `<latentos/sdk/nav/nav_client.h>` |
+| Low Level | 本版本不可用，见 [Low Level](./low-level.md) |
+| 导航与点云（Nav） | `<latentos/sdk/nav/nav_client.h>` |
 
 ## 兼容说明
 

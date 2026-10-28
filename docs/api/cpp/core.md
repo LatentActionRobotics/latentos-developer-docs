@@ -1,15 +1,16 @@
 ---
-sidebar_label: Core
+sidebar_label: 连接与会话（Core）
 ---
 
 # Core API
 
-`core` 是所有业务模块的地基，提供连接配置与共享会话：
+`core` 是所有业务模块的地基，提供连接配置、共享会话和整机状态读取：
 
+- **`robot_status::RobotStatusClient`**：整机状态查询、订阅和故障事件消费，编入 core；见 [Robot Status](./robot-status.md)。
 - **`SdkOptions`**：Echo client 配置路径、实例标识与重连间隔。
 - **`core::Session`**：持有连接配置，供 Motion、Telemetry、Power 等模块 Client 共享。
 
-业务应用通常不单独链接 Core，而是链接具体模块 target（如 `latentos::sdk_motion`），由它们自动引入 Core。只有在自行组合多个模块 Client、或调试 Session 生命周期时，才需要直接依赖本模块。
+业务应用通常不单独链接 Core，而是链接具体模块 target（如 `latentos::sdk_motion`），由它们自动引入 Core。只读取整机状态的应用可以直接链接 Core；无需独立的 robot_status 库。
 
 应用侧包含配置与 Session 头文件：
 
@@ -81,6 +82,7 @@ sdk::telemetry::TelemetryClient telemetry(session);
 
 ## 相关文档
 
+- [Robot Status API](./robot-status.md)
 - [C++ SDK 指南](../../sdk/cpp.md)
 - [C++ API 总览](./index.md)
 - [连接机器人](../../getting-started/connect.md)

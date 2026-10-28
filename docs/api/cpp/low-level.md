@@ -1,5 +1,5 @@
 ---
-sidebar_label: Low Level
+sidebar_label: 关节底层控制（Low Level）
 ---
 
 # Low Level API

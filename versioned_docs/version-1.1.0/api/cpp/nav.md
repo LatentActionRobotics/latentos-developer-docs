@@ -1,5 +1,5 @@
 ---
-sidebar_label: Nav
+sidebar_label: 导航与点云（Nav）
 ---
 
 # Nav API
