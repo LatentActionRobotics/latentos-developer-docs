@@ -1,6 +1,6 @@
 # 查询运动控制状态
 
-查询当前运动控制状态。`current_group` 表示当前 group（如 `stand` / `sit_down` / `passive`）；切换过程中还可看 `target_group` 与 `is_transitioning`。Group 名称含义见 [Group 与 Policy](../concepts/groups-and-policies.md)。
+查询当前运动控制状态。`current_group` 表示当前 group（如 `stand` / `sit_down` / `passive`）；切换过程中还可看 `target_group` 与 `is_transitioning`。Group 名称含义见 [Motion API：Group 与 Policy](../api/cpp/motion.md#groups-and-policies)。
 
 用法：`query_motion_state [--client-config PATH]`
 

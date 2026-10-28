@@ -12,6 +12,52 @@ sidebar_label: 运动控制（Motion）
 
 操作真机前请确认当前 Group、控制权、速度范围和现场安全条件。
 
+<a id="groups-and-policies"></a>
+
+## Group 与 Policy
+
+**Group** 是运动控制的运行态（如站立、行走）；**Policy** 是挂在需要策略推理的 Group 下的运行时槽位。切换命令必须使用目标机上真实存在、且当前规则允许切到的名字。
+
+| 类型 | 名称 | 说明 |
+| --- | --- | --- |
+| 无 Policy 的 Group | `standby`、`passive`、`stand`、`sit_down`、`joint_test`（部分机型另有 `recovery`） | `SwitchGroup` 的 policy 传空字符串 |
+| 必须带 Policy 的 Group | `locomotion`、`motion_tracking` | 不带 policy 会在本地直接失败 |
+
+切换时传的是**槽位名**（如 `default`、`policy1`），不是 App 展示名。
+
+### 基础 Policy
+
+下列为多数机型共用的 `locomotion` 基础策略（切换请用「槽位名」列）：
+
+| 槽位名 | 展示名 | 说明 |
+| --- | --- | --- |
+| `default` | 综合地形 | 默认行走策略，适合平地和一般起伏地形 |
+| `policy1` | 相位模式 | 相位步态行走，节律更明确 |
+
+个别硬件可能没有 `policy1`。其它 locomotion 槽位（如高速、高台等）以及 `motion_tracking`（如 `backflip`）因机型而异，以目标机实际可用策略为准。
+
+**何时切 Group / Policy：**
+
+- 换运行态（如 `stand` → 行走、坐下）→ `SwitchGroup`
+- 已在 `locomotion` / `motion_tracking` 内只换策略 → `SwitchCurrentPolicy`
+- 切「相位模式」：`SwitchGroup("locomotion", "policy1", …)`，或已在 locomotion 时 `SwitchCurrentPolicy("policy1", …)`；不要传展示名「相位模式」
+
+常见切换顺序（以目标机规则为准）：
+
+```text
+standby → passive / stand
+stand   → locomotion / passive / sit_down
+locomotion → passive / sit_down / motion_tracking
+```
+
+上电后走到可发速度：
+
+```text
+passive → stand → locomotion default → SendVelocity
+```
+
+可用 `QueryMotionControlState` 查看 `current_group` / `target_group` / `is_transitioning`。
+
 应用侧至少包含 Session 与 Motion Client 头文件；结果与枚举类型头文件已由后者间接引入，需要单独使用时可再显式包含 `result.h` / `codes.h`：
 
 ```cpp
@@ -149,6 +195,22 @@ std::cout << "ok=" << loco.ok << " accepted=" << loco.accepted
           << " message=" << loco.message << '\n';
 ```
 
+### 切换 Policy
+
+以「相位模式」为例：切换参数是槽位名 `policy1`，不要传展示名。已在 `locomotion` 时用 `SwitchCurrentPolicy`；若仍在其它 Group，可一次 `SwitchGroup` 进入：
+
+```cpp showLineNumbers
+// 已在 locomotion（例如上例刚切到 default）时，组内切到相位模式
+auto phase = motion.SwitchCurrentPolicy("policy1", command_options);
+if (!phase.ok || !phase.accepted) {
+  std::cerr << phase.message << '\n';
+  return;
+}
+
+// 等价写法：从 stand 等直接进入 locomotion + 相位模式
+// auto phase = motion.SwitchGroup("locomotion", "policy1", command_options);
+```
+
 ### 查询运动状态
 
 ```cpp showLineNumbers
@@ -180,12 +242,11 @@ for (int i = 0; i < 10; ++i) {
 }
 ```
 
-完整使用流程见 [Group 与 Policy](../../concepts/groups-and-policies.md) 与示例 `switch_group`、`switch_policy`、`query_motion_state`、`send_velocity`。
+完整使用流程见上文 [Group 与 Policy](#groups-and-policies) 与示例 `switch_group`、`switch_policy`、`query_motion_state`、`send_velocity`。
 
 ## 相关文档
 
 - [C++ SDK 指南](../../sdk/cpp.md)
-- [Group 与 Policy](../../concepts/groups-and-policies.md)
 - [切换 Group](../../examples/switch-group.md)
 - [发送速度](../../examples/send-velocity.md)
 - [Low Level API](./low-level.md)（直接关节模式 `joint_test`）

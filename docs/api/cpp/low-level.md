@@ -161,7 +161,7 @@ low_level.SubscribeJointState(
 
 使用前必须：
 
-1. 让机器人进入直接关节模式，例如 `MotionClient::SwitchGroup("joint_test", "")`（`joint_test` 不需要 policy，见 [Group 与 Policy](../../concepts/groups-and-policies.md)）。
+1. 让机器人进入直接关节模式，例如 `MotionClient::SwitchGroup("joint_test", "")`（`joint_test` 不需要 policy，见 [Motion API：Group 与 Policy](./motion.md#groups-and-policies)）。
 2. 停止其他会抢占同一话题的控制源。
 3. 准备吊架、急停，并先在仿真或吊起状态下用小幅值验证。
 

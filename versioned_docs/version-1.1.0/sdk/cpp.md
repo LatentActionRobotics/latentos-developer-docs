@@ -172,7 +172,7 @@ if (battery && battery->ok && !battery->stale) {
 | `SendVelocity(x, y, yaw)` | 发送 SE(2) 速度，单位分别为 m/s、m/s、rad/s |
 | `VelocityCandidateTopic()` | 获取速度 Publisher 使用的只读 Topic 元数据 |
 
-Group、Policy 规则见 [Group 与 Policy](../concepts/groups-and-policies.md)。
+Group、Policy 规则见 [Motion API：Group 与 Policy](../api/cpp/motion.md#groups-and-policies)。
 
 ### Telemetry
 

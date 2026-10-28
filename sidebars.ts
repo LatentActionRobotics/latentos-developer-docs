@@ -35,7 +35,6 @@ const sidebars: SidebarsConfig = {
         'api/cpp/nav',
       ],
     },
-    'concepts/groups-and-policies',
     {
       type: 'category',
       label: '运行示例',
